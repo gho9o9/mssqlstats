@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *   
+FROM
+  sys.resource_governor_resource_pools
+OPTION(RECOMPILE)

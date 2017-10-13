@@ -1,0 +1,2 @@
+/*mssqlstats_v1*/
+EXEC sys.xp_instance_regread N'HKEY_LOCAL_MACHINE', N'HARDWARE\DESCRIPTION\System\CentralProcessor\0', N'ProcessorNameString'

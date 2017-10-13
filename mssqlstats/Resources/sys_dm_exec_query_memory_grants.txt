@@ -1,0 +1,8 @@
+USE tempdb  -- 2000ŒİŠ·ƒ‚[ƒh‚ÌDB‚¾‚ÆCROSS APPLY‚ªsyntax error‚É‚È‚é‚Ì‚Åtempdb‚ÉˆÚ“®
+SELECT TOP 50 /*mssqlstats_v1*/
+  mg.*, qt.text AS "Statement Text"
+FROM
+  sys.dm_exec_query_memory_grants AS mg
+  CROSS APPLY sys.dm_exec_sql_text (mg.sql_handle) AS qt
+ORDER BY wait_time_ms DESC
+OPTION(RECOMPILE)

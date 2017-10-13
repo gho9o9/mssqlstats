@@ -1,0 +1,29 @@
+SELECT TOP 500 /*mssqlstats_v1*/
+  OBJECT_NAME(p.object_id) AS table_name
+  , s.object_id
+  , s.name AS stat_name 
+  , p.last_updated
+  , p.stats_id
+  , s.auto_created
+  , s.user_created
+  , s.no_recompute
+  , s.has_filter
+  , s.filter_definition
+  , s.is_temporary  /*SQL12Å`*/
+  , p.rows
+  , p.rows_sampled
+  , (1.0 * p.rows) / p.rows_sampled as sample_rate
+  , p.steps
+  , p.unfiltered_rows
+  , p.modification_counter
+FROM sys.stats s 
+  LEFT JOIN sys.objects o
+    ON s.object_id = o.object_id
+  OUTER APPLY sys.dm_db_stats_properties (s.object_id, s.stats_id) p
+WHERE 
+  o.type = 'U'
+  AND rows IS NOT NULL
+--AND s.name NOT LIKE ('_WA_Sys_%')
+ORDER BY p.last_updated ASC
+-- sys.dm_db_stats_propertiesÇÕSQL12SP1Å`ÅASQL08R2SP2Ç≈ÉTÉ|Å[ÉgÅ`
+OPTION(RECOMPILE)

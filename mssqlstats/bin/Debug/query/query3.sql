@@ -1,0 +1,1 @@
+use tempdb; select * from [tblVarcharMax]

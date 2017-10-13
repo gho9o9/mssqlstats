@@ -1,0 +1,44 @@
+USE tempdb --システムDB全体ではなくtempdbのみを対象とする
+DECLARE @db_id int = DB_ID(); -- 2000互換モードだと関数の引数に関数を使うとsyntax errorになることへの対処。
+SELECT /*mssqlstats_v1*/
+  DB_NAME(s.database_id) AS dbaname
+  ,OBJECT_NAME(s.object_id) AS tabname
+  ,i.name AS idxname
+  ,i.index_id  
+  ,partition_number
+  ,row_lock_count
+  ,row_lock_wait_count
+  ,row_lock_wait_in_ms
+  ,[row block %]=CAST(100.0 * row_lock_wait_count / (1 + row_lock_count) as numeric(15,2))
+  ,[avg row lock waits in ms]=CAST(1.0 * row_lock_wait_in_ms / (1 + row_lock_wait_count) as numeric(15,2))
+  ,page_lock_count
+  ,page_lock_wait_count
+  ,page_lock_wait_in_ms
+  ,[page block %]=CAST(100.0 * page_lock_wait_count / (1 + page_lock_count) as numeric(15,2))
+  ,[avg page lock waits in ms]=CAST(1.0 * page_lock_wait_in_ms / (1 + page_lock_wait_count) as numeric(15,2))
+  ,page_latch_wait_count
+  ,page_latch_wait_in_ms
+  ,[avg page latch waits in ms]=CAST(1.0 * page_latch_wait_in_ms / (1 + page_latch_wait_count) as numeric(15,2))
+  ,page_io_latch_wait_count
+  ,page_io_latch_wait_in_ms
+  ,[avg page io latch waits in ms]=CAST(1.0 * page_io_latch_wait_in_ms / (1 + page_io_latch_wait_count) as numeric(15,2))
+  ,tree_page_latch_wait_count
+  ,tree_page_latch_wait_in_ms
+  ,[avg tree page latch waits in ms]=CAST(1.0 * tree_page_latch_wait_in_ms / (1 + tree_page_latch_wait_count) as numeric(15,2))
+  ,tree_page_io_latch_wait_count
+  ,tree_page_io_latch_wait_in_ms
+  ,[avg tree page io latch waits in ms]=CAST(1.0 * tree_page_io_latch_wait_in_ms / (1 + tree_page_io_latch_wait_count) as numeric(15,2))
+  ,index_lock_promotion_attempt_count
+  ,index_lock_promotion_count
+  ,page_compression_attempt_count
+  ,page_compression_success_count
+FROM
+  sys.dm_db_index_operational_stats (@db_id, NULL, NULL, NULL) s
+  ,sys.indexes i
+WHERE
+  objectproperty(s.object_id,'IsUserTable') = 1
+  AND i.object_id = s.object_id
+  AND i.index_id = s.index_id
+ORDER BY
+ row_lock_wait_count DESC
+OPTION(RECOMPILE)

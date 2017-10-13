@@ -1,0 +1,11 @@
+USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+SELECT /*mssqlstats_v1*/
+  cur.* 
+FROM 
+  sys.dm_exec_connections con
+  cross apply sys.dm_exec_cursors(con.session_id) as cur
+WHERE
+  cur.fetch_buffer_size = 1 
+  and cur.properties LIKE 'API%'
+-- order by なし（ランダム出力）
+OPTION(RECOMPILE)

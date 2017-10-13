@@ -1,0 +1,13 @@
+SELECT /*mssqlstats_v1*/
+@@VERSION AS Version,
+SERVERPROPERTY('processid') AS PID,
+SERVERPROPERTY('Collation') AS Collation,
+SERVERPROPERTY('ComputerNamePhysicalNetBIOS') AS ComputerNamePhysicalNetBIOS,
+SERVERPROPERTY('HadrManagerStatus') AS HadrManagerStatus,
+SERVERPROPERTY('InstanceName') AS InstanceName,
+SERVERPROPERTY('IsClustered') AS IsClustered,
+SERVERPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled,
+SERVERPROPERTY('IsHadrEnabled') AS IsHadrEnabled,
+SERVERPROPERTY('IsIntegratedSecurityOnly') AS IsIntegratedSecurityOnly,
+SERVERPROPERTY('MachineName') AS MachineName,
+SERVERPROPERTY('ServerName') AS ServerName

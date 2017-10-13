@@ -1,0 +1,21 @@
+SELECT distinct TOP 20 /*mssqlstats_v1*/
+  cc.cache_address,
+  cc.name,
+  cc.type,
+  cc.pages_kb,
+  cc.pages_in_use_kb,
+  cc.entries_count,
+  cc.entries_in_use_count,
+  ch.rounds_count,
+  ch.removed_all_rounds_count,
+  ch.removed_last_round_count,
+  *
+FROM
+  sys.dm_os_memory_cache_counters cc
+  join sys.dm_os_memory_cache_clock_hands ch on (cc.cache_address = ch.cache_address)
+WHERE
+  ch.rounds_count > 0
+  and ch.removed_all_rounds_count > 0
+ORDER BY
+  cc.pages_kb desc
+OPTION(RECOMPILE)

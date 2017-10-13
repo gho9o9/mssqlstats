@@ -1,0 +1,2 @@
+/*mssqlstats_v1*/
+DBCC TRACESTATUS

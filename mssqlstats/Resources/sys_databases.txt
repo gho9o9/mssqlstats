@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  SUSER_SNAME(owner_sid) AS owner
+  , * 
+FROM sys.databases
+OPTION(RECOMPILE)

@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8FC303F-3AC0-4BB4-A813-52E3BBFE8F5D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>mssqlstats</RootNamespace>
+    <AssemblyName>mssqlstats</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net35\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net35\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.7\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollectConfigHandler.cs" />
+    <Compile Include="MssqlStatsException.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Query.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wmi_win32_service.txt" />
+    <None Include="Resources\wmi_win32_bios.txt" />
+    <None Include="Resources\sys_dm_db_persisted_sku_features.txt" />
+    <None Include="Resources\sys_dm_server_services.txt" />
+    <None Include="Resources\sys_dm_tcp_listener_states.txt" />
+    <None Include="Resources\readerrorlog_ifi.txt" />
+    <None Include="Resources\sys_dm_server_registry.txt" />
+    <None Include="Resources\sys_dm_server_memory_dumps.txt" />
+    <None Include="Resources\sys_dm_database_encryption_keys.txt" />
+    <None Include="Resources\sys_xp_enumerrorlogs.txt" />
+    <None Include="Resources\sys_xp_instance_regread_processornamestring.txt" />
+    <None Include="Resources\wmi_win32_powerplan.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_plan_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_plan.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_plan_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_plan.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb.txt" />
+    <Content Include="Work\BUGFIX.txt" />
+    <Content Include="Work\HOWTO.txt" />
+    <Content Include="README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Work\TODO.txt" />
+    <None Include="Resources\_GET_DB_NAME_LIST.txt" />
+    <None Include="Resources\_SET_TRANSACTION_ISOLATION_LEVEL_READUNCOMMITTED.txt" />
+    <None Include="Resources\_GET_PRODUCT_VERSION.txt" />
+    <None Include="Resources\_DBCC_SQLPERF_CLEAR_STATS.txt" />
+    <None Include="Resources\sys_dm_db_index_operational_stats_lock_sysdb.txt" />
+    <None Include="Resources\sys_dm_db_index_operational_stats_sysdb.txt" />
+    <None Include="Resources\sys_dm_db_index_operational_stats_lock_userdb.txt" />
+    <None Include="Resources\sys_dm_db_index_operational_stats_userdb.txt" />
+    <None Include="Resources\sys_dm_io_virtual_file_stats.txt" />
+    <None Include="Resources\sys_dm_os_spinlock_stats.txt" />
+    <None Include="Resources\sys_dm_os_latch_stats.txt" />
+    <None Include="Resources\sys_dm_os_wait_stats_ratio.txt" />
+    <None Include="Resources\sys_dm_os_wait_stats.txt" />
+    <None Include="Resources\sys_dm_os_memory_cache_clock_hands_2.txt" />
+    <None Include="Resources\sys_dm_os_memory_cache_clock_hands.txt" />
+    <None Include="Resources\sys_dm_os_ring_buffers.txt" />
+    <None Include="Resources\sys_dm_os_process_memory.txt" />
+    <None Include="Resources\sys_dm_os_sys_memory.txt" />
+    <None Include="Resources\sys_dm_exec_query_memory_grants.txt" />
+    <None Include="Resources\sys_dm_os_workers.txt" />
+    <None Include="Resources\sys_dm_os_schedulers.txt" />
+    <None Include="Resources\sys_dm_db_file_space_usage.txt" />
+    <None Include="Resources\sys_dm_tran_database_transactions.txt" />
+    <None Include="Resources\sys_dm_exec_cursors.txt" />
+    <None Include="Resources\sys_dm_os_performance_counters_batch_resp_statistics.txt" />
+    <None Include="Resources\sys_master_files_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_by_stmt_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_by_stmt.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_by_stmt.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_by_text.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_by_stmt_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_userdb_by_text_2.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_by_text.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_sysdb_by_text_2.txt" />
+    <None Include="Resources\sys_dm_exec_cached_plans_sysdb.txt" />
+    <None Include="Resources\sys_dm_exec_query_optimizer_info.txt" />
+    <None Include="Resources\sys_dm_exec_cached_plans_userdb.txt" />
+    <None Include="Resources\sys_dm_exec_cached_plans_size.txt" />
+    <None Include="Resources\sys_dm_exec_cached_plans_reused_ratio.txt" />
+    <None Include="Resources\sys_stats.txt" />
+    <None Include="Resources\sys_dm_db_stats_properties.txt" />
+    <None Include="Resources\sys_dm_db_missing_index.txt" />
+    <None Include="Resources\sys_dm_db_index_usage_stats.txt" />
+    <None Include="Resources\sys_indexes.txt" />
+    <None Include="Resources\sys_dm_db_index_physical_stats.txt" />
+    <None Include="Resources\msdb_dbo_backupset_2.txt" />
+    <None Include="Resources\msdb_dbo_backupset.txt" />
+    <None Include="Resources\sys_resource_governor_workload_groups.txt" />
+    <None Include="Resources\sys_resource_governor_resource_pools.txt" />
+    <None Include="Resources\sys_resource_governor_configuration.txt" />
+    <None Include="Resources\msdb_dbo_syscollector_collection_sets.txt" />
+    <None Include="Resources\msdb_dbo_syscollector_collection_items.txt" />
+    <None Include="Resources\msdb_dbo_sysproxies.txt" />
+    <None Include="Resources\msdb_dbo_sysoperators.txt" />
+    <None Include="Resources\msdb_dbo_sysalerts.txt" />
+    <None Include="Resources\msdb_dbo_sysjobschedules.txt" />
+    <None Include="Resources\msdb_dbo_sysschedules.txt" />
+    <None Include="Resources\msdb_dbo_sysjobsteps.txt" />
+    <None Include="Resources\msdb_dbo_sysmaintplan_plans.txt" />
+    <None Include="Resources\dbcc_dbinfo.txt" />
+    <None Include="Resources\dbcc_sqlperf_logspace.txt" />
+    <None Include="Resources\dbcc_tracestatus.txt" />
+    <None Include="Resources\readerrorlog_num_of_phisical_cores.txt" />
+    <None Include="Resources\serverproperty.txt" />
+    <None Include="Resources\sp_spaceused_database.txt" />
+    <None Include="Resources\sp_spaceused_object.txt" />
+    <None Include="Resources\sys_configurations.txt" />
+    <None Include="Resources\sys_database_scoped_configurations.txt" />
+    <None Include="Resources\sys_databases.txt" />
+    <None Include="Resources\sys_dm_db_partition_stats.txt" />
+    <None Include="Resources\sys_dm_os_nodes.txt" />
+    <None Include="Resources\sys_dm_os_sys_info.txt" />
+    <None Include="Resources\sys_dm_os_windows_info.txt" />
+    <None Include="Resources\sys_master_files.txt" />
+    <None Include="Resources\xp_regread_preferred_plan.txt" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\_SET_LOCK_TIMEOUT.txt" />
+    <Content Include="Work\MEMO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

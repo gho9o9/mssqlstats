@@ -1,0 +1,83 @@
+USE tempdb  -- 2000互換モードのDBだとAPPLYがsyntax errorになるのでtempdbに移動
+SELECT /*mssqlstats_v1*/
+  th.thread_address
+  , w.worker_address
+  , t.task_address
+  /*, w.processor_group 2008R2以降でサポート*/
+  , s.parent_node_id as numa_node
+  , s.cpu_id
+  , s.scheduler_id
+  , s.status
+  , s.current_tasks_count
+  , s.runnable_tasks_count
+  , s.current_workers_count
+  , s.active_workers_count
+  , s.work_queue_count
+  , s.is_idle
+  , r.command
+  ,SUBSTRING(q.text, (r.statement_start_offset/2) + 1,
+    ((CASE r.statement_end_offset 
+      WHEN -1 THEN DATALENGTH(text)
+      ELSE r.statement_end_offset END 
+      - r.statement_start_offset)/2) + 1
+    ) AS query_text
+  , r.status
+  , r.start_time
+  , r.total_elapsed_time
+  , r.cpu_time
+  , r.reads
+  , r.writes
+  , r.logical_reads
+  , r.row_count
+  , r.blocking_session_id
+  , r.wait_type
+  , r.wait_time
+  , r.wait_resource
+  , r.lock_timeout
+  , w.state as wk_state
+  , t.task_state 
+  , i.ms_ticks - w.worker_created_ms_ticks as wk_elapsed_ms_since_CREATED
+  , wk_elapsed_ms_since_SUSPENDED =
+      CASE w.wait_started_ms_ticks
+        WHEN 0 THEN NULL
+        ELSE i.ms_ticks - w.wait_started_ms_ticks
+      END
+  , wk_elapsed_ms_since_RESUMED =
+      CASE w.wait_resumed_ms_ticks
+        WHEN 0 THEN NULL
+        ELSE i.ms_ticks - w.wait_resumed_ms_ticks
+      END
+  , wk_elapsed_ms_since_BOUNDED =
+      CASE w.task_bound_ms_ticks
+        WHEN 0 THEN NULL
+        ELSE i.ms_ticks - w.task_bound_ms_ticks
+      END
+  , w.context_switch_count as wk_context_switch_count
+  , t.context_switches_count as task_context_switches_count
+  , s.context_switches_count as sos_context_switches_count
+  , w.pending_io_byte_count as wk_pending_io_byte_count
+  , t.pending_io_byte_count as task_pending_io_byte_count
+  , s.pending_disk_io_count as sos_pending_disk_io_count
+  , w.is_preemptive
+  , s.preemptive_switches_count
+  , s.yield_count
+  , w.is_sick
+  , w.exception_num
+  , w.exception_severity
+  , w.last_wait_type
+  , w.return_code
+  , w.tasks_processed_count
+  , *
+FROM sys.dm_os_threads th
+  left join sys.dm_os_workers w
+    ON w.thread_address = th.thread_address
+  left join sys.dm_os_tasks t
+    ON w.task_address = t.task_address
+  left join sys.dm_exec_requests as r
+    ON t.session_id = r.session_id and t.request_id = r.request_id
+  left join sys.dm_os_schedulers s
+    ON w.scheduler_address = s.scheduler_address
+  OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) q
+  OUTER APPLY sys.dm_os_sys_info i
+ORDER BY s.scheduler_id
+OPTION(RECOMPILE)

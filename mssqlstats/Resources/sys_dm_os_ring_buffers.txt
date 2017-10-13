@@ -1,0 +1,12 @@
+SELECT TOP 100 /*mssqlstats_v1*/
+  *  
+FROM
+  sys.dm_os_ring_buffers
+WHERE
+  ring_buffer_type in ('RING_BUFFER_RESOURCE_MONITOR', 'RING_BUFFER_OOM', 'RING_BUFFER_MEMORY_BROKER', 'RING_BUFFER_BUFFER_POOL')
+ORDER BY timestamp DESC
+-- RING_BUFFER_RESOURCE_MONITOR：リソースモニタからの通知
+-- RING_BUFFER_OOM：外部メモリ負荷の通知
+-- RING_BUFFER_MEMORY_BROKER：内部メモリ負荷の通知
+-- RING_BUFFER_BUFFER_POOL：バッファプールにおけるエラーの通知
+OPTION(RECOMPILE)

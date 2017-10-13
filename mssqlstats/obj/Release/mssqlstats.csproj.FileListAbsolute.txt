@@ -1,0 +1,14 @@
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\mssqlstats.exe.config
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\mssqlstats.exe
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\CommandLine.dll
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\CsvHelper.dll
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\DotNetZip.dll
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\log4net.dll
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\CommandLine.xml
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\CsvHelper.xml
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\DotNetZip.xml
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\log4net.xml
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\obj\Release\mssqlstats.Properties.Resources.resources
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\obj\Release\mssqlstats.csproj.GenerateResource.Cache
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\obj\Release\mssqlstats.exe
+C:\Users\o9o9\Dropbox\Tech\source\mssqlstats\mssqlstats\bin\Release\README.txt

@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *   
+FROM
+  msdb.dbo.syscollector_collection_items
+OPTION(RECOMPILE)

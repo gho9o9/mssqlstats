@@ -1,0 +1,7 @@
+SELECT /*mssqlstats_v1*/ 
+  * 
+FROM 
+  sys.dm_server_registry 
+ORDER BY
+  value_name 
+OPTION(RECOMPILE)

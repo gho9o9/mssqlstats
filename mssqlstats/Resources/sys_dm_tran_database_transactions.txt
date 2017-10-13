@@ -1,0 +1,24 @@
+SELECT /*mssqlstats_v1*/
+  DATEDIFF(SECOND, database_transaction_begin_time , GETDATE()) AS "Transaction Elapsed Time(sec)"
+  , database_transaction_begin_time
+  , database_transaction_type
+  , database_transaction_state
+  , s.login_time
+  , s.host_name
+  , s.program_name
+  , s.login_name
+  , db_name(dt.database_id) AS dbname
+  , s.status
+  , text as active_query
+  , dt.*
+  , s.*
+FROM
+  sys.dm_tran_database_transactions dt
+  LEFT JOIN sys.dm_tran_session_transactions st ON dt.transaction_id = st.transaction_id
+  LEFT JOIN sys.dm_exec_sessions s ON st.session_id = s.session_id
+  LEFT JOIN sys.dm_exec_requests r on dt.transaction_id = r.transaction_id
+  OUTER APPLY sys.dm_exec_sql_text( r.sql_handle )
+WHERE
+  database_transaction_begin_time IS NOT NULL
+ORDER BY 1 DESC
+OPTION(RECOMPILE)

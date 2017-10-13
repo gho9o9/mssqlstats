@@ -1,0 +1,11 @@
+SELECT /*mssqlstats_v1*/
+  *
+FROM
+  sys.dm_os_spinlock_stats
+WHERE
+  spins > 0
+ORDER BY
+  spins DESC
+-- 必要に応じて実行の都度、統計をクリアを行う。
+-- DBCC SQLPERF ('sys.dm_os_spinlock_stats', CLEAR)
+OPTION(RECOMPILE)

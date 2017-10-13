@@ -1,0 +1,6 @@
+SELECT /*mssqlstats_v1*/
+  CAST(DATEADD(SECOND, (ms_ticks/1000)*(-1), GETDATE()) AS nvarchar(25)) as os_start_time 
+  , * 
+FROM
+  sys.dm_os_sys_info
+OPTION(RECOMPILE)

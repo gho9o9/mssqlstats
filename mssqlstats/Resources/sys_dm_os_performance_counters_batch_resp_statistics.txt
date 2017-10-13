@@ -1,0 +1,31 @@
+SELECT /*mssqlstats_v1*/
+  counter_name
+  ,"CPU Time:Requests"
+  ,"CPU Time:Total(ms)"
+  ,"Elapsed Time:Requests"
+  ,"Elapsed Time:Total(ms)"
+FROM
+  (
+    SELECT
+      counter_name
+      ,instance_name
+      ,cntr_value
+    FROM
+      sys.dm_os_performance_counters
+    WHERE
+      OBJECT_NAME LIKE '%Batch Resp Statistics%'
+  ) perf
+  PIVOT
+  (
+    AVG(cntr_value)
+    FOR instance_name
+    IN
+    (
+      "CPU Time:Requests"
+      ,"CPU Time:Total(ms)"
+      ,"Elapsed Time:Requests"
+      ,"Elapsed Time:Total(ms)"
+    )
+  ) pvt
+-- Batch Resp StatisticsはSQL12以降でサポート
+OPTION(RECOMPILE)

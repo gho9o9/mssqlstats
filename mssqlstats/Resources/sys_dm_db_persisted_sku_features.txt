@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *   
+FROM
+  sys.dm_db_persisted_sku_features
+OPTION(RECOMPILE)

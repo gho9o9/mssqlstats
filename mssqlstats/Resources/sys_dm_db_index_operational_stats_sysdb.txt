@@ -1,0 +1,29 @@
+USE tempdb --システムDB全体ではなくtempdbのみを対象とする
+DECLARE @db_id int = DB_ID(); -- 2000互換モードだと関数の引数に関数を使うとsyntax errorになることへの対処。
+SELECT /*mssqlstats_v1*/
+  DB_NAME(u.database_id) AS dbaname
+  ,OBJECT_NAME(u.object_id) AS tabname
+  ,i.name AS idxname
+  ,CAST(u.user_seeks AS numeric(38)) + CAST(u.user_scans AS numeric(38)) + CAST(u.user_lookups AS numeric(38)) AS reads
+  ,u.user_updates AS writes
+  ,u.user_updates
+  ,u.index_id
+  ,u.user_seeks
+  ,u.user_scans
+  ,u.user_lookups
+  ,s.range_scan_count
+  ,s.singleton_lookup_count
+  ,CAST(s.leaf_insert_count AS numeric(38)) + CAST(s.leaf_update_count AS numeric(38)) + CAST(s.leaf_delete_count AS numeric(38)) AS leaf_writes
+  ,s.leaf_allocation_count AS leaf_page_splits
+  ,CAST(s.nonleaf_insert_count AS numeric(38)) + CAST(s.nonleaf_update_count AS numeric(38)) + CAST(s.nonleaf_delete_count AS numeric(38)) AS nonleaf_writes
+  ,s.nonleaf_allocation_count AS nonleaf_page_splits
+  ,*
+FROM
+  sys.dm_db_index_usage_stats u
+  LEFT JOIN sys.indexes i ON u.index_id = i.index_id AND u.object_id = i.object_id
+  LEFT JOIN sys.dm_db_index_operational_stats(@db_id,NULL,NULL,NULL) s ON s.index_id = i.index_id AND s.object_id = i.object_id
+WHERE
+  u.database_id = DB_ID() 
+  AND objectproperty(i.object_id,'IsUserTable') = 1
+ORDER BY reads DESC
+OPTION(RECOMPILE)

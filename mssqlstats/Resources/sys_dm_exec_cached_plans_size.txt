@@ -1,0 +1,14 @@
+SELECT /*mssqlstats_v1*/
+  objtype
+  , cacheobjtype
+  , COUNT_BIG(*) AS num_of_obj
+  , SUM(CAST(size_in_bytes AS numeric(38))) / 1024 AS size_in_kbytes
+  , SUM(CAST(usecounts AS numeric(38))) AS usecounts
+  , SUM(CAST(refcounts AS numeric(38))) AS refcounts
+FROM
+  sys.dm_exec_cached_plans
+GROUP BY
+  objtype, cacheobjtype
+ORDER BY
+  size_in_kbytes DESC
+OPTION(RECOMPILE)

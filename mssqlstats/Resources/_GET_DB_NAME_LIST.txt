@@ -1,0 +1,7 @@
+SELECT /*mssqlstats_v1*/
+  *  
+FROM
+  sys.databases
+WHERE
+  name not in('master', 'tempdb', 'model', 'msdb')
+OPTION(RECOMPILE)

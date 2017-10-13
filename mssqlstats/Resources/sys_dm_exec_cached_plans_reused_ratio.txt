@@ -1,0 +1,7 @@
+SELECT /*mssqlstats_v1*/
+  'Single use plans (usecounts=1)' = sum(case(CAST(usecounts AS numeric(38))) when 1 then 1 else 0 end)
+  , 'Single use plans size(KB)' = sum(case(CAST(usecounts AS numeric(38))) when 1 then CAST(size_in_bytes AS numeric(38)) else 0 end)/1024
+  , 'Re-used plans (usecounts>1)' = sum(case(CAST(usecounts AS numeric(38))) when 1 then 0 else 1 end)
+  , 'Re-used plans size(KB)' = sum(case(CAST(usecounts AS numeric(38))) when 1 then 0 else CAST(size_in_bytes AS numeric(38)) end)/1024
+FROM sys.dm_exec_cached_plans
+OPTION(RECOMPILE)

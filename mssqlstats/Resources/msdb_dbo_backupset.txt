@@ -1,0 +1,36 @@
+SELECT /*mssqlstats_v1*/
+  db.name [Name]
+  , db.recovery_model_desc
+  , CASE WHEN agdb.database_id IS NOT NULL THEN 'AG Database'
+      ELSE 'Not AG Database'
+    END [IsAgDb]
+  , CASE WHEN sys.fn_hadr_backup_is_preferred_replica(db.name) = 1 THEN 'YES'
+      ELSE 'NO'
+    END [IsPreferredReplica]
+  , t.LastFullBackup
+  , t.LastDiffBackup
+  , t.LastLogBackup
+  , t.DaysSinceLastFullBackup
+  , t.DaysSinceLastDiffBackup
+  , t.MinutesSinceLastLogBackup
+FROM
+  sys.databases db
+  LEFT OUTER JOIN
+    (  SELECT
+         p.database_name
+         , MAX(p.[D]) [LastFullBackup]
+         , MAX(p.[I]) [LastDiffBackup]
+         , MAX(p.[L]) [LastLogBackup]
+         , DATEDIFF(DAY, MAX(p.[D]), GETDATE()) [DaysSinceLastFullBackup]
+         , DATEDIFF(DAY, MAX(p.[I]), GETDATE()) [DaysSinceLastDiffBackup]
+         , DATEDIFF(MINUTE, MAX(p.[L]), GETDATE()) [MinutesSinceLastLogBackup]
+       FROM
+         msdb.dbo.backupset bs PIVOT ( MAX(bs.backup_finish_date) FOR [type] IN ( [D], [L], [I] ) )  AS p
+       GROUP BY
+         p.database_name
+     ) t
+     ON db.name = t.database_name
+  LEFT OUTER JOIN
+    sys.dm_hadr_database_replica_states agdb
+    ON agdb.database_id = db.database_id AND agdb.is_local = 1
+OPTION(RECOMPILE)

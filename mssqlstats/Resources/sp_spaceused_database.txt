@@ -1,0 +1,17 @@
+/*mssqlstats_v1*/
+DECLARE @dbname sysname
+DECLARE @sql nvarchar(max)
+DECLARE cur CURSOR FOR select name from sys.databases
+OPEN cur
+FETCH NEXT FROM cur INTO @dbname
+WHILE @@FETCH_STATUS = 0
+BEGIN
+   SET @sql = N'USE ' + @dbname + ';'
+   SET @sql = @sql + N'EXEC sp_spaceused ;'
+   -- より正確な状態を取得する場合は@updateusageをTRUEに。コストがかかるので注意。
+   -- SET @sql = @sql + N'EXEC sp_spaceused @updateusage = N''TRUE'';'
+   EXEC (@sql) -- USE句の有効範囲はこのEXEC内に限る
+   FETCH NEXT FROM cur INTO @dbname
+END
+CLOSE cur
+DEALLOCATE cur

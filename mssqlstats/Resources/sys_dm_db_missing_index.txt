@@ -1,0 +1,32 @@
+SELECT /*mssqlstats_v1*/
+  s.avg_total_user_cost 
+    * (s.avg_user_impact / 100.0) 
+    * ( CAST(s.user_seeks as numeric(38)) + CAST(s.user_scans as numeric(38)) )
+    AS improvement_measure
+  ,DB_NAME(d.database_id) AS dbname
+  ,OBJECT_NAME(d.object_id) AS tablname
+  ,'CREATE INDEX [missing_index_' + CONVERT (varchar, g.index_group_handle) + '_' + CONVERT (varchar, d.index_handle) 
+  + '_' + LEFT (PARSENAME(d.statement, 1), 32) + ']'
+  + ' ON ' + d.statement 
+  + ' (' + ISNULL (d.equality_columns,'') 
+    + CASE WHEN d.equality_columns IS NOT NULL AND d.inequality_columns IS NOT NULL THEN ',' ELSE '' END 
+    + ISNULL (d.inequality_columns, '')
+  + ')' 
+  + ISNULL (' INCLUDE (' + d.included_columns + ')', '') AS create_index_statement
+  ,d.*
+  ,s.*
+FROM
+  sys.dm_db_missing_index_group_stats AS s
+  INNER JOIN sys.dm_db_missing_index_groups AS g
+    ON (s.group_handle = g.index_group_handle)
+  INNER JOIN sys.dm_db_missing_index_details AS d
+    ON (g.index_handle = d.index_handle)
+WHERE
+  10 < (
+    s.avg_total_user_cost 
+      * (s.avg_user_impact / 100.0) 
+      * ( CAST(s.user_seeks as numeric(38)) + CAST(s.user_scans as numeric(38)) )
+  )
+ORDER BY
+  improvement_measure DESC
+OPTION(RECOMPILE)

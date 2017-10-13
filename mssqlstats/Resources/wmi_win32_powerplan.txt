@@ -1,0 +1,3 @@
+SELECT ElementName FROM WIN32_PowerPlan
+
+WIN32_PowerPlanはnamespaceが\\root\cimv2\powerなので、現状の実装はcimv2固定だから、実行できず。。。

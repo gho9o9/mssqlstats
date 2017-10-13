@@ -1,0 +1,2 @@
+select /*mssqlstats_v1*/
+  SERVERPROPERTY('ProductVersion')

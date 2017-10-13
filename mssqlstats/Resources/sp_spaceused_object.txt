@@ -1,0 +1,22 @@
+/*mssqlstats_v1*/
+DECLARE userobj_cursor CURSOR FOR 
+SELECT 
+  sys.schemas.name + '.'+ sys.objects.name
+FROM sys.objects, sys.schemas
+WHERE object_id > 100 
+  and type_desc = 'USER_TABLE' 
+  and sys.objects.schema_id = sys.schemas.schema_id
+  -- and 使用する際は何らかのフィルタをかけて対象とするオブジェクトを絞ること
+
+OPEN userobj_cursor
+
+DECLARE @name varchar(256)
+FETCH userobj_cursor into @name
+WHILE (@@FETCH_STATUS = 0) 
+BEGIN
+  EXEC sp_spaceused @objname = @name
+    FETCH userobj_cursor into @name
+END
+
+CLOSE userobj_cursor
+DEALLOCATE userobj_cursor

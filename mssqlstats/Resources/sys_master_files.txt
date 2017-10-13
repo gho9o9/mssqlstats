@@ -1,0 +1,18 @@
+USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+SELECT /*mssqlstats_v1*/
+  db_name(m.database_id) as db_name
+  , v.file_system_type
+  , v.total_bytes / 1024 / 1024 as total_Mbytes
+  , v.available_bytes / 1024 / 1024 as available_bytes
+  , m.file_id
+  , m.type_desc
+  , m.name
+  , m.physical_name
+  , CAST(m.size AS numeric(38)) * 8 / 1024 as file_size_mb
+  , m.data_space_id
+  , *
+FROM 
+  sys.master_files as m
+  CROSS APPLY sys.dm_os_volume_stats(m.database_id, m.file_id) as v --sys.dm_os_volume_statsはSQL Server 2008 R2 SP1 以降のバージョン
+ORDER BY db_name
+OPTION(RECOMPILE)

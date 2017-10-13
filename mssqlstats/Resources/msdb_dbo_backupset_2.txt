@@ -1,0 +1,27 @@
+SELECT /*mssqlstats_v1*/
+  db.name [Name]
+  , db.recovery_model_desc
+  , t.LastFullBackup
+  , t.LastDiffBackup
+  , t.LastLogBackup
+  , t.DaysSinceLastFullBackup
+  , t.DaysSinceLastDiffBackup
+  , t.MinutesSinceLastLogBackup
+FROM
+  sys.databases db
+  LEFT OUTER JOIN
+    (  SELECT
+         p.database_name
+         , MAX(p.[D]) [LastFullBackup]
+         , MAX(p.[I]) [LastDiffBackup]
+         , MAX(p.[L]) [LastLogBackup]
+         , DATEDIFF(DAY, MAX(p.[D]), GETDATE()) [DaysSinceLastFullBackup]
+         , DATEDIFF(DAY, MAX(p.[I]), GETDATE()) [DaysSinceLastDiffBackup]
+         , DATEDIFF(MINUTE, MAX(p.[L]), GETDATE()) [MinutesSinceLastLogBackup]
+       FROM
+         msdb.dbo.backupset bs PIVOT ( MAX(bs.backup_finish_date) FOR [type] IN ( [D], [L], [I] ) )  AS p
+       GROUP BY
+         p.database_name
+     ) t
+     ON db.name = t.database_name
+OPTION(RECOMPILE)

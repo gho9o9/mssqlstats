@@ -1,0 +1,9 @@
+SELECT /*mssqlstats_v1*/
+  j.name
+  ,s.*
+FROM
+  msdb.dbo.sysjobs j
+  LEFT JOIN msdb.dbo.sysjobsteps s
+  ON j.job_id = s.job_id
+ORDER BY s.step_id
+OPTION(RECOMPILE)

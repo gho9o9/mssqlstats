@@ -1,0 +1,18 @@
+/*mssqlstats_v1*/
+DBCC DBINFO WITH TABLERESULTS
+
+/*
+DECLARE @dbname sysname
+DECLARE @sql nvarchar(max)
+DECLARE cur CURSOR FOR select name from sys.databases
+OPEN cur
+FETCH NEXT FROM cur INTO @dbname
+WHILE @@FETCH_STATUS = 0
+BEGIN
+   SET @sql = N'DBCC DBINFO ( ' + @dbname + ') WITH TABLERESULTS'
+   EXEC (@sql)
+   FETCH NEXT FROM cur INTO @dbname
+END
+CLOSE cur
+DEALLOCATE cur
+*/

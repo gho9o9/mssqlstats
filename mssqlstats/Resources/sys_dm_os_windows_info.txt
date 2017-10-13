@@ -1,0 +1,6 @@
+SELECT /*mssqlstats_v1*/
+  *
+FROM
+  sys.dm_os_windows_info
+--sys.dm_os_windows_infoはSQL Server 2008 R2 SP1 以降でサポート
+OPTION(RECOMPILE)

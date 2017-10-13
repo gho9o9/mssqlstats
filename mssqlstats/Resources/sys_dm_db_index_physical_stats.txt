@@ -1,0 +1,37 @@
+DECLARE @db_id int = DB_ID(); -- 2000互換モードだと関数の引数に関数を使うとsyntax errorになることへの対処。
+SELECT TOP 500 /*mssqlstats_v1*/
+  DB_NAME(database_id) AS db_name
+  , OBJECT_NAME(s.object_id) AS table_name
+  , i.name AS index_name
+  , s.index_id
+  , s.partition_number
+  , d.name AS fg_name
+  , d.type AS fg_type
+  , s.index_type_desc
+  , s.alloc_unit_type_desc
+  , s.avg_fragmentation_in_percent
+  , s.fragment_count
+  , s.avg_fragment_size_in_pages
+  , s.page_count
+  , s.avg_page_space_used_in_percent
+  , s.record_count
+  , s.ghost_record_count
+  , s.version_ghost_record_count
+  , s.min_record_size_in_bytes
+  , s.max_record_size_in_bytes
+  , s.avg_record_size_in_bytes
+  , s.forwarded_record_count
+  , s.compressed_page_count
+  , i.fill_factor
+  , i.is_primary_key
+  , i.is_unique
+  , i.is_unique_constraint
+FROM
+  sys.dm_db_index_physical_stats(@db_id, NULL, NULL, NULL, 'SAMPLED') s
+LEFT JOIN sys.indexes i
+  ON s.object_id = i.object_id AND s.index_id = i.index_id
+LEFT JOIN sys.data_spaces d
+  ON i.data_space_id = d.data_space_id
+WHERE s.index_id <> 0 AND s.avg_fragmentation_in_percent > 10
+ORDER BY s.avg_fragmentation_in_percent DESC
+OPTION(RECOMPILE)

@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *   
+FROM
+  msdb.dbo.sysproxies
+OPTION(RECOMPILE)

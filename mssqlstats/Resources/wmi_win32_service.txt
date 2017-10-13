@@ -1,0 +1,1 @@
+SELECT name, startname FROM Win32_Service WHERE name LIKE 'MS%'

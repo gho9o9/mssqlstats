@@ -1,0 +1,2 @@
+/*mssqlstats_v1*/
+EXEC sys.xp_readerrorlog 0, 1, N'Database Instant File Initialization: enabled'

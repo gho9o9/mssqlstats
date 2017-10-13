@@ -1,0 +1,7 @@
+SELECT /*mssqlstats_v1*/
+  * 
+FROM
+  sys.database_scoped_configurations
+ORDER BY
+  configuration_id
+OPTION(RECOMPILE)

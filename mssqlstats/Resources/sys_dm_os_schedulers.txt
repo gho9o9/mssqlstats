@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *  
+FROM
+  sys.dm_os_schedulers
+OPTION(RECOMPILE)

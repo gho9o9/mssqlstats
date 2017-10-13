@@ -1,0 +1,15 @@
+USE tempdb  -- 2000å›ä∑ÉÇÅ[ÉhÇÃDBÇæÇ∆CROSS APPLYÇ™syntax errorÇ…Ç»ÇÈÇÃÇ≈tempdbÇ…à⁄ìÆ
+SELECT /*mssqlstats_v1*/
+  db_name(m.database_id) as db_name
+  , m.file_id
+  , m.type_desc
+  , m.name
+  , m.physical_name
+  , CAST(m.size AS numeric(38)) * 8 / 1024 as file_size_mb
+  , m.data_space_id
+  , *
+FROM 
+  sys.master_files as m
+-- WHERE database_id = DB_ID()
+ORDER BY db_name
+OPTION(RECOMPILE)

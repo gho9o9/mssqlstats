@@ -1,0 +1,5 @@
+SELECT /*mssqlstats_v1*/
+  *
+FROM
+  sys.dm_exec_query_optimizer_info
+OPTION(RECOMPILE)

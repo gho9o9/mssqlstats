@@ -1,0 +1,11 @@
+USE master
+SELECT /*mssqlstats_v1*/ 
+  DB_NAME(e.database_id) AS dbname
+  , c.*
+  , e.*
+FROM 
+  sys.certificates c 
+  INNER JOIN sys.dm_database_encryption_keys e 
+    ON c.thumbprint = e.encryptor_thumbprint 
+WHERE 
+  c.pvt_key_last_backup_date IS NULL

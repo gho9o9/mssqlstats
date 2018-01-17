@@ -7,7 +7,7 @@ namespace mssqlstats
     class CollectConfigHandler : ConfigurationSection
     {
         /// <summary>
-        /// servers要素下にhost要素のリストを設定する
+        /// Queries要素下にadd要素のリストを設定する
         /// </summary>
         [ConfigurationProperty("Queries", IsDefaultCollection = true)]
         public CollectConfigItemCollection Query
@@ -21,7 +21,7 @@ namespace mssqlstats
 
 
     /// <summary>
-    /// host要素のコレクションをまとめるservers要素の定義
+    /// add要素のコレクションをまとめるQueries要素の定義
     /// </summary>
     public class CollectConfigItemCollection : ConfigurationElementCollection
     {
@@ -72,7 +72,7 @@ namespace mssqlstats
     }
 
     /// <summary>
-    /// host要素の定義
+    /// add要素の定義
     /// </summary>
     public class CollectConfigItem : ConfigurationElement
     {
@@ -92,6 +92,9 @@ namespace mssqlstats
             }
         }
 
+        /// <summary>
+        /// version属性、必須
+        /// </summary>
         [ConfigurationProperty("version", IsRequired = true)]
         public int Version
         {
@@ -106,7 +109,7 @@ namespace mssqlstats
         }
 
         /// <summary>
-        /// address属性、必須
+        /// target属性、必須
         /// </summary>
         [ConfigurationProperty("target", IsRequired = true)]
         public string Target
@@ -122,7 +125,7 @@ namespace mssqlstats
         }
 
         /// <summary>
-        /// port属性、必須
+        /// run属性、必須
         /// </summary>
         [ConfigurationProperty("run", IsRequired = true)]
         public bool Run
@@ -138,16 +141,33 @@ namespace mssqlstats
         }
 
         /// <summary>
+        /// desc属性、任意（既定値は空文字）
+        /// </summary>
+        [ConfigurationProperty("desc", IsRequired = false)]
+        public string Desc
+        {
+            get
+            {
+                return (string)this["desc"];
+            }
+            set
+            {
+                this["desc"] = value;
+            }
+        }
+
+        /// <summary>
         /// 診断用文字列を返す
         /// </summary>
         /// <returns>診断用文字列</returns>
         public override string ToString()
         {
             var buf = new StringBuilder();
-            buf.Append("name").Append(Name);
-            buf.Append(", version").Append(Version.ToString());
-            buf.Append(", target").Append(Target);
-            buf.Append(", run").Append(Run.ToString());
+            buf.Append("name=").Append(Name);
+            buf.Append(", version=").Append(Version.ToString());
+            buf.Append(", target=").Append(Target);
+            buf.Append(", run=").Append(Run.ToString());
+            buf.Append(", desc=").Append(Desc.ToString());
             return buf.ToString();
         }
     }

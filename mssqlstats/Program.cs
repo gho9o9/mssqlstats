@@ -35,36 +35,37 @@ namespace mssqlstats
             , SQL2012 = 0x008        // 11.0
             , SQL2014 = 0x010        // 12.0
             , SQL2016 = 0x020        // 13.0
+            , SQL2017 = 0x040        // 14.0
         }
 
         static void DebugCode(SqlCommand Cmd)
         {
             System.OperatingSystem os = System.Environment.OSVersion;
 
-            Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1";
-            int res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
+            //Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1";
+            //int res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
 
-            Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1"; //このselectがロックウェイトするように先行Txでupdateしておく
+            //Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1"; //このselectがロックウェイトするように先行Txでupdateしておく
 
-            using (SqlDataReader reader1 = Cmd.ExecuteReader())//コマンドタイムアウトはここでException。
-            {
-                res = reader1.FieldCount;
-                do
-                {
-                    for (int i = 0; i < reader1.FieldCount; i++)
-                    {
-                        logger.Debug(reader1.GetName(i));
-                    }
+            //using (SqlDataReader reader1 = Cmd.ExecuteReader())//コマンドタイムアウトはここでException。
+            //{
+            //    res = reader1.FieldCount;
+            //    do
+            //    {
+            //        for (int i = 0; i < reader1.FieldCount; i++)
+            //        {
+            //            logger.Debug(reader1.GetName(i));
+            //        }
 
-                    while (reader1.Read()) //locktimeoutはここでエスカレーション
-                    {
-                        for (int i = 0; i < reader1.FieldCount; i++)
-                        {
-                            logger.Debug(reader1.GetValue(i).ToString());
-                        }
-                    }
-                } while (reader1.NextResult());
-            }
+            //        while (reader1.Read()) //locktimeoutはここでエスカレーション
+            //        {
+            //            for (int i = 0; i < reader1.FieldCount; i++)
+            //            {
+            //                logger.Debug(reader1.GetValue(i).ToString());
+            //            }
+            //        }
+            //    } while (reader1.NextResult());
+            //}
         }
 
         static void Main(string[] args)
@@ -398,6 +399,9 @@ namespace mssqlstats
                 case "13.0":
                     Version = SQLVersion.SQL2016;
                     break;
+                case "14.0":
+                    Version = SQLVersion.SQL2017;
+                    break;
                 default:
                     //DBのバージョンがツールのサポート対象外のケース
                     Version = SQLVersion.UNKNOWN;
@@ -424,8 +428,9 @@ namespace mssqlstats
                         SQL2008R2(10.50) = 0x0004
                         SQL2012(11.0) = 0x0008
                         SQL2014(12.0) = 0x0010
-                        SQL2016(13.0) = 0x0020 */
-                    Version = SQLVersion.UNKNOWN;
+                        SQL2016(13.0) = 0x0020
+                        SQL2017(14.0) = 0x0040 */
+                Version = SQLVersion.UNKNOWN;
                 }
             }
             return Version;
@@ -508,8 +513,15 @@ namespace mssqlstats
                         //HasFlag は .net v4以降
                         //if (conf.Run
                         //    && ((SQLVersion)conf.Version).HasFlag(ver))
-                        if (conf.Run
-                            && ((((SQLVersion)conf.Version) & ver) == ver))
+                        if (
+                            conf.Run
+                            &&
+                            (
+                              ((((SQLVersion)conf.Version) & ver) == ver)
+                              ||
+                              (conf.Version == 0)
+                            )
+                           )
                         {
                             if (conf.Target.ToString().Equals("System"))
                                 target = Query.QueryTarget.System;

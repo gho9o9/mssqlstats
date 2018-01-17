@@ -1,5 +1,9 @@
-
-mssqlstats/Work/TODO.txt
-mssqlstats/Work/BUGFIX.txt
-mssqlstats/Work/HOWTO.txt
-mssqlstats/Work/MEMO.txt
+.git/
+.vs/
+mssqlstats/bin/
+mssqlstats/obj/
+mssqlstats/Work/
+mssqlstats/Work/
+mssqlstats/Work/
+mssqlstats/Work/
+packages/

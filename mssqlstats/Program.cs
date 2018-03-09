@@ -40,19 +40,10 @@ namespace mssqlstats
 
         static void DebugCode(SqlCommand Cmd)
         {
-            //System.OperatingSystem os = System.Environment.OSVersion;
+            System.OperatingSystem os = System.Environment.OSVersion;
 
-            //Cmd.CommandText = "use db01";
+            //Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1";
             //int res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "exec test_no_proc 1";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "EXEC sp_executesql N'/*aaa*/ SELECT * FROM dataset WHERE id = @param1', N'@param1 int', @param1 = 1";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "select * from sys.databases";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
 
             //Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1"; //このselectがロックウェイトするように先行Txでupdateしておく
 
@@ -130,8 +121,8 @@ namespace mssqlstats
                     {
                         // エラーのケースは１通り
                         // ・コマンドライン引数 -d が無指定 ＆ システムDB以外のユーザDBが一つも存在しないケース
-                        logger.Error("Please specify the target database with -d or -D.");
-                        // -d or -D で対象のデータベースを指定してください。
+                        logger.Error("Please specify the target database with -d.");
+                        // -d で対象のデータベースを指定してください。
                         Environment.Exit(1);
                     }
                     else
@@ -209,7 +200,7 @@ namespace mssqlstats
 #if TRACE
                                     logger.Debug("Instance:" + key + "->" + OutputDir + @"\" + key + ".csv");
 #endif
-                                    Cmd.CommandText = "USE [master]; " + QueryList[key].Text;
+                                    Cmd.CommandText = "USE master; " + QueryList[key].Text;
                                     using (reader = Cmd.ExecuteReader())
                                     {
                                         WriteCSV(reader, OutputDir + @"\" + key + ".csv");
@@ -222,7 +213,7 @@ namespace mssqlstats
 #if TRACE
                                         logger.Debug("DB(" + dbname + "):" + key + "->" + OutputDir + @"\" + dbname + @"\" + key + ".csv");
 #endif
-                                        Cmd.CommandText = "USE [" + dbname + @"];" + QueryList[key].Text;
+                                        Cmd.CommandText = "USE " + dbname + @";" + QueryList[key].Text;
                                         using (reader = Cmd.ExecuteReader())
                                         {
                                             WriteCSV(reader, OutputDir + @"\" + dbname + @"\" + key + ".csv");
@@ -487,18 +478,11 @@ namespace mssqlstats
                 {
                     using (StreamReader sr = new StreamReader(filename, System.Text.Encoding.Default))
                     {
-                        // ファイル名が"Instance（大文字小文字を区別しない）"で開始されていた場合はインスタンスレベルのクエリであると解釈する
-                        if (Path.GetFileName(filename).StartsWith("Instance", true, null))
-                            target = Query.QueryTarget.Instance;
-                        // そうでない場合は、DB名が指定されている場合はDBレベルのクエリであると解釈する
+                        if (Parameters.DatabaseName != null)
+                            target = Query.QueryTarget.Database;
                         else
-                        {
-                            if (Parameters.DatabaseName != null || Parameters.DatabaseNameList != null)
-                                target = Query.QueryTarget.Database;
-                            else
-                                target = Query.QueryTarget.Instance;
-                        }
-                        
+                            target = Query.QueryTarget.Instance;
+
                         list.Add(Path.GetFileNameWithoutExtension(filename)
                             , new Query(sr.ReadToEnd(), target));
 #if TRACE

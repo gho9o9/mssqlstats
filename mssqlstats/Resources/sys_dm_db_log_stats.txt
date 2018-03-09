@@ -1,4 +1,0 @@
-SELECT /*mssqlstats_v2*/
-  *
-FROM
-  sys.dm_db_log_stats(DB_ID())

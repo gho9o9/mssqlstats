@@ -382,13 +382,4 @@
   <data name="sys_dm_exec_query_stats_userdb_plan_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sys_dm_exec_query_stats_userdb_plan_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
-  <data name="dbcc_loginfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dbcc_loginfo.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_log_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_log_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_log_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_log_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
 </root>

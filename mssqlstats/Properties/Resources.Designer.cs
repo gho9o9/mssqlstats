@@ -19,7 +19,7 @@ namespace mssqlstats.Properties {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -137,32 +137,6 @@ namespace mssqlstats.Properties {
         internal static string dbcc_dbinfo {
             get {
                 return ResourceManager.GetString("dbcc_dbinfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   /*mssqlstats_v2*/
-        ///DBCC LOGINFO
-        ///
-        ////*
-        ///DECLARE @dbname sysname
-        ///DECLARE @sql nvarchar(max)
-        ///DECLARE cur CURSOR FOR select name from sys.databases
-        ///OPEN cur
-        ///FETCH NEXT FROM cur INTO @dbname
-        ///WHILE @@FETCH_STATUS = 0
-        ///BEGIN
-        ///   SET @sql = N&apos;DBCC LOGINFO ( &apos; + @dbname + &apos;) &apos;
-        ///   EXEC (@sql)
-        ///   FETCH NEXT FROM cur INTO @dbname
-        ///END
-        ///CLOSE cur
-        ///DEALLOCATE cur
-        ///*/ に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string dbcc_loginfo {
-            get {
-                return ResourceManager.GetString("dbcc_loginfo", resourceCulture);
             }
         }
         
@@ -680,30 +654,6 @@ namespace mssqlstats.Properties {
         internal static string sys_dm_db_index_usage_stats {
             get {
                 return ResourceManager.GetString("sys_dm_db_index_usage_stats", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   SELECT /*mssqlstats_v2*/
-        ///  *
-        ///FROM
-        ///  sys.dm_db_log_info(DB_ID()) に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string sys_dm_db_log_info {
-            get {
-                return ResourceManager.GetString("sys_dm_db_log_info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   SELECT /*mssqlstats_v2*/
-        ///  *
-        ///FROM
-        ///  sys.dm_db_log_stats(DB_ID()) に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string sys_dm_db_log_stats {
-            get {
-                return ResourceManager.GetString("sys_dm_db_log_stats", resourceCulture);
             }
         }
         

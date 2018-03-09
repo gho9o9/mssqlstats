@@ -109,6 +109,54 @@ namespace mssqlstats
         }
 
         /// <summary>
+        /// version_desc属性、任意（既定値は空文字）
+        /// </summary>
+        [ConfigurationProperty("version_desc", IsRequired = false)]
+        public string VersionDesc
+        {
+            get
+            {
+                return (string)this["version_desc"];
+            }
+            set
+            {
+                this["version_desc"] = value;
+            }
+        }
+
+        /// <summary>
+        /// platform属性、必須
+        /// </summary>
+        [ConfigurationProperty("platform", IsRequired = true)]
+        public int Platform
+        {
+            get
+            {
+                return (int)this["platform"];
+            }
+            set
+            {
+                this["platform"] = value;
+            }
+        }
+
+        /// <summary>
+        /// platform_desc属性、任意（既定値は空文字）
+        /// </summary>
+        [ConfigurationProperty("platform_desc", IsRequired = false)]
+        public string PlatformDesc
+        {
+            get
+            {
+                return (string)this["platform_desc"];
+            }
+            set
+            {
+                this["platform_desc"] = value;
+            }
+        }
+
+        /// <summary>
         /// target属性、必須
         /// </summary>
         [ConfigurationProperty("target", IsRequired = true)]
@@ -141,18 +189,18 @@ namespace mssqlstats
         }
 
         /// <summary>
-        /// desc属性、任意（既定値は空文字）
+        /// memo属性、任意（既定値は空文字）
         /// </summary>
-        [ConfigurationProperty("desc", IsRequired = false)]
-        public string Desc
+        [ConfigurationProperty("memo", IsRequired = false)]
+        public string Memo
         {
             get
             {
-                return (string)this["desc"];
+                return (string)this["memo"];
             }
             set
             {
-                this["desc"] = value;
+                this["memo"] = value;
             }
         }
 
@@ -167,7 +215,7 @@ namespace mssqlstats
             buf.Append(", version=").Append(Version.ToString());
             buf.Append(", target=").Append(Target);
             buf.Append(", run=").Append(Run.ToString());
-            buf.Append(", desc=").Append(Desc.ToString());
+            buf.Append(", version_desc=").Append(VersionDesc.ToString());
             return buf.ToString();
         }
     }

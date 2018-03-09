@@ -134,13 +134,15 @@
 
       ▼ Q：外部のコマンド（*.sqlファイルに記述されたT-SQL）を実行したい場合、そのコマンド
             ファイルの格納されたフォルダを指定します。
+			ファイル名が"Instance（大文字小文字を区別しない）"で開始されていた場合はインスタンスレベルのクエリであると解釈し、
+			そうでない場合かつDB名が指定されている場合はDBレベルのクエリであると解釈します。
       ▼ q：ツールが既定で実行するコマンドは実行せず、外部のコマンドのみを実行したい場合に
             このパラメータを指定します。
 
         例）
 
         ・ 外部のコマンドフォルダ指定（該当フォルダ配下の*.sqlがすべて実行されます）
-            > mssqlstats.exe -E -S server -d db_name
+            > mssqlstats.exe -E -S server -Q dir_path
 
         ・ 外部のコマンドのみを実行
-            > mssqlstats.exe -E -S server -q path -Q
+            > mssqlstats.exe -E -S server -Q dir_path -q

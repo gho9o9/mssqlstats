@@ -63,14 +63,14 @@ namespace mssqlstats
             //    {
             //        for (int i = 0; i < reader1.FieldCount; i++)
             //        {
-            //            logger.Debug(reader1.GetName(i));
+            //            logger.Info(reader1.GetName(i));
             //        }
 
             //        while (reader1.Read()) //locktimeoutはここでエスカレーション
             //        {
             //            for (int i = 0; i < reader1.FieldCount; i++)
             //            {
-            //                logger.Debug(reader1.GetValue(i).ToString());
+            //                logger.Info(reader1.GetValue(i).ToString());
             //            }
             //        }
             //    } while (reader1.NextResult());
@@ -92,17 +92,20 @@ namespace mssqlstats
                 SetProcEnv();
 
                 //１．処理開始の通知
-                logger.Info(" 1/10. Start.");
+                logger.Info("1/10. Start.");
 
                 //２．コマンドライン引数の解析
-                logger.Info(" 2/10. Parse CommandLine Parameters.");
+                logger.Info("2/10. Parse CommandLine Parameters.");
                 ParseCommandLineParams(args);
 
                 using (Conn = new SqlConnection(BuildConnectionString(Parameters)))
                 using (Cmd = new SqlCommand())
                 {
                     //３．コネクションオープン
-                    logger.Info(" 3/10. Try to Connect SQL Server.");
+                    logger.Info("3/10. Try to Connect SQL Server.");
+#if TRACE
+                    logger.Info("ConnectionString = " + Conn.ConnectionString);
+#endif
                     Conn.Open();
                     Cmd.Connection = Conn;
                     SetSessionEnv(Cmd);
@@ -111,7 +114,7 @@ namespace mssqlstats
                         DebugCode(Cmd);
 #endif
                     //４．バージョンチェック
-                    logger.Info(" 4/10. Check SQL Server Version.");
+                    logger.Info("4/10. Check SQL Server Version.");
                     DBVersion = CheckDBVersion(Cmd);
                     if (DBVersion == SQLVersion.UNKNOWN)
                     {
@@ -124,7 +127,7 @@ namespace mssqlstats
                     }
 
                     //５．対象DB一覧取得
-                    logger.Info( " 5/10. Get Database List.");
+                    logger.Info( "5/10. Get Database List.");
                     DBNameList = GetDBNameList(Cmd);
                     if (DBNameList == null)
                     {
@@ -162,19 +165,19 @@ namespace mssqlstats
                     }
 
                     //６．出力フォルダ（OutputRootDir + yyyyMMddhhmmss）作成
-                    logger.Info(" 6/10. Create Result Folder.");
+                    logger.Info("6/10. Create Result Folder.");
                     OutputDir = Path.Combine(Parameters.OutputRootDir
                         , @"mssqlstats_" + DateTime.Now.ToString("yyyyMMddhhmmss"));
                     foreach (String dbname in DBNameList)
                     {
                         Directory.CreateDirectory(Path.Combine(OutputDir, dbname));
 #if TRACE
-                        logger.Debug("OutputDir = " + Path.Combine(OutputDir, dbname));
+                        logger.Info("OutputDir = " + Path.Combine(OutputDir, dbname));
 #endif
                     }
 
                     //７．実行クエリのロード
-                    logger.Info(" 7/10. Load Query.");
+                    logger.Info("7/10. Load Query.");
                     QueryList = LoadQuery(DBVersion);
                     if (QueryList == null)
                     {
@@ -184,7 +187,7 @@ namespace mssqlstats
                     }
 
                     //８．クエリ実行 ＆ CSV出力
-                    logger.Info(" 8/10. Execute Query.");
+                    logger.Info("8/10. Execute Query.");
                     SqlDataReader reader = null;
                     foreach (String key in QueryList.Keys)
                     {
@@ -195,7 +198,7 @@ namespace mssqlstats
                                 case Query.QueryTarget.System:
 
 #if TRACE
-                                    logger.Debug("System:" + key + "->" + OutputDir + @"\" + key + ".csv");
+                                    logger.Info("System:" + key + "->" + OutputDir + @"\" + key + ".csv");
 #endif
                                     ManagementScope scope = new ManagementScope(String.Format(@"\\{0}\root\cimv2", Parameters.Server));
                                     WriteCSV(scope, QueryList[key].Text, OutputDir + @"\" + key + ".csv");
@@ -207,7 +210,7 @@ namespace mssqlstats
                                 case Query.QueryTarget.Instance:
 
 #if TRACE
-                                    logger.Debug("Instance:" + key + "->" + OutputDir + @"\" + key + ".csv");
+                                    logger.Info("Instance:" + key + "->" + OutputDir + @"\" + key + ".csv");
 #endif
                                     Cmd.CommandText = "USE [master]; " + QueryList[key].Text;
                                     using (reader = Cmd.ExecuteReader())
@@ -220,7 +223,7 @@ namespace mssqlstats
                                     foreach (String dbname in DBNameList)
                                     {
 #if TRACE
-                                        logger.Debug("DB(" + dbname + "):" + key + "->" + OutputDir + @"\" + dbname + @"\" + key + ".csv");
+                                        logger.Info("DB(" + dbname + "):" + key + "->" + OutputDir + @"\" + dbname + @"\" + key + ".csv");
 #endif
                                         Cmd.CommandText = "USE [" + dbname + @"];" + QueryList[key].Text;
                                         using (reader = Cmd.ExecuteReader())
@@ -252,7 +255,7 @@ namespace mssqlstats
                     }
 
                     //９．出力フォルダをZIP圧縮 ＆ 出力フォルダを削除
-                    logger.Info(" 9/10. Archive Result Folder.");
+                    logger.Info("9/10. Archive Result Folder.");
                     ArchiveOutputFiles(OutputDir);
 
                     //１０．処理完了の通知
@@ -305,10 +308,6 @@ namespace mssqlstats
                 builder.UserID = opt.LoginID;
             }
 
-#if TRACE
-            logger.Debug("ConnectionString = " + builder.ConnectionString);
-#endif
-
             return builder.ConnectionString;
         }
 
@@ -316,8 +315,8 @@ namespace mssqlstats
         {
 
 #if TRACE
-            foreach (string arg in args)
-                logger.Debug("args = " + arg);
+            //foreach (string arg in args)
+                logger.Info(args);
 #endif
             //コマンドライン引数は大文字小文字を区別する
             Parser p = new Parser(with => with.CaseSensitive = true);
@@ -360,12 +359,6 @@ namespace mssqlstats
             Parameters.Server = m.Groups["server"].Value;
             Parameters.Instance = m.Groups["instance"].Value;
             Parameters.Port = m.Groups["port"].Value;
-#if TRACE
-            logger.Debug("protocol = " + Parameters.Protocol);
-            logger.Debug("server   = " + Parameters.Server);
-            logger.Debug("instance = " + Parameters.Instance);
-            logger.Debug("port     = " + Parameters.Port);
-#endif
         }
 
         static void SetSessionEnv(SqlCommand cmd)
@@ -377,8 +370,8 @@ namespace mssqlstats
             //ロックタイムアウト設定（ReadUnCommittedでもSch-*なロック獲得が必要なクエリがあり）
             SetLockTimeout(cmd, Parameters.LockTimeout_sec * 1000);
 #if TRACE
-            logger.Debug("Query Timeout = " + Parameters.CommandTimeout_sec.ToString() + "[sec]");
-            logger.Debug("Lock Timeout  = " + Parameters.LockTimeout_sec.ToString() + "[sec]");
+            //logger.Info("Query Timeout = " + Parameters.CommandTimeout_sec.ToString() + "[sec]");
+            //logger.Info("Lock Timeout  = " + Parameters.LockTimeout_sec.ToString() + "[sec]");
 #endif
         }
 
@@ -418,9 +411,9 @@ namespace mssqlstats
             }
 
 #if TRACE
-            logger.Debug("SQL Server ProductVersion = " + v);
-            logger.Debug("SQL Server Version = " + Version.ToString());
-            logger.Debug("DB version specified in App.config = " + ConfigurationManager.AppSettings["verbit"]);
+            logger.Info("SQL Server ProductVersion = " + v);
+            logger.Info("SQL Server Version = " + Version.ToString());
+            logger.Info("DB version specified in App.config = " + ConfigurationManager.AppSettings["verbit"]);
 #endif
 
             if (!Parameters.IsBypassVersionCheck)
@@ -468,6 +461,13 @@ namespace mssqlstats
             {
                 //すでにチェック済みで通らないパス
             }
+#if TRACE
+
+            foreach (String dbname in list)
+            {
+                logger.Info("Target Database = " + dbname);
+            }
+#endif
             return list;
         }
 
@@ -479,6 +479,9 @@ namespace mssqlstats
             ResourceSet res = null;
             IDictionaryEnumerator files = null;
             CollectConfigItem conf = null;
+            int system_query_num = 0;
+            int db_query_num= 0;
+            int instance_query_num = 0;
 
             //  外部クエリのロード
             if (Parameters.ExternalQueryDir != null)
@@ -489,20 +492,31 @@ namespace mssqlstats
                     {
                         // ファイル名が"Instance（大文字小文字を区別しない）"で開始されていた場合はインスタンスレベルのクエリであると解釈する
                         if (Path.GetFileName(filename).StartsWith("Instance", true, null))
+                        {
                             target = Query.QueryTarget.Instance;
+                            instance_query_num++;
+                        }
                         // そうでない場合は、DB名が指定されている場合はDBレベルのクエリであると解釈する
                         else
                         {
                             if (Parameters.DatabaseName != null || Parameters.DatabaseNameList != null)
+                            {
                                 target = Query.QueryTarget.Database;
+                                db_query_num++;
+                            }
                             else
+                            {
                                 target = Query.QueryTarget.Instance;
+                                instance_query_num++;
+                            }
                         }
                         
                         list.Add(Path.GetFileNameWithoutExtension(filename)
                             , new Query(sr.ReadToEnd(), target));
 #if TRACE
-                        logger.Debug("ExternalQuery = " + Path.GetFileNameWithoutExtension(filename));
+                        logger.Info("ExternalQuery = " + Path.GetFileNameWithoutExtension(filename)
+                            + ", Target = " + target.ToString()
+                            );
 #endif
                     }
                 }
@@ -540,11 +554,20 @@ namespace mssqlstats
                            )
                         {
                             if (conf.Target.ToString().Equals("System"))
+                            {
                                 target = Query.QueryTarget.System;
-                            else if (conf.Target.ToString().Equals("Instance"))
+                                system_query_num++;
+                            }
+                            else if(conf.Target.ToString().Equals("Instance"))
+                            {
                                 target = Query.QueryTarget.Instance;
+                                instance_query_num++;
+                            }
                             else if (conf.Target.ToString().Equals("Database"))
+                            {
                                 target = Query.QueryTarget.Database;
+                                db_query_num++;
+                            }
                             else
                                 logger.Error(String.Format("Invalid target string({0}),", conf.Target.ToString()));
 
@@ -553,17 +576,25 @@ namespace mssqlstats
                         }
 
 #if TRACE
-                        logger.Debug("InternalQuery = " + conf.Name.ToString());
-                        logger.Debug("  Version = " + String.Format("0x{0:X4}", conf.Version));
-                        logger.Debug("  Target = " + conf.Target.ToString());
-                        logger.Debug("  Run = " + conf.Run.ToString());
-                        //logger.Debug("  Query = " + files.Entry.Value.ToString());
+                        logger.Info("InternalQuery = " + conf.Name.ToString()
+                            + ", Version = " + String.Format("0x{0:X4}", conf.Version)
+                            + ", Target = " + conf.Target.ToString()
+                            + ", Run = " + conf.Run.ToString()
+                            /* + ", Query = " + files.Entry.Value.ToString() */
+                            );
 #endif
 
                         conf = null;
                     }
                 }
             }
+#if TRACE
+            logger.Info("Total Query Count= " + (system_query_num + instance_query_num + db_query_num).ToString()
+                + ", System Query Count = " + system_query_num.ToString()
+                + ", Instance Query Count = " + instance_query_num.ToString()
+                + ", Database Query Count = " + db_query_num.ToString()
+                );
+#endif
             return list;
         }
 

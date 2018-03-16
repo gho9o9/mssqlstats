@@ -240,6 +240,30 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT TOP(30) /*mssqlstats_v2*/
+        ///  bs.machine_name
+        ///  , bs.server_name
+        ///  , bs.database_name AS db_name
+        ///  , bs.recovery_model
+        ///  , bs.name AS backup_name
+        ///  , backup_type =
+        ///      CASE bs.type
+        ///         WHEN &apos;D&apos; THEN &apos;Full Backup&apos;
+        ///         WHEN &apos;I&apos; THEN &apos;Diff Backup&apos;
+        ///         WHEN &apos;L&apos; THEN &apos;Log Backup&apos;
+        ///         WHEN &apos;F&apos; THEN &apos;File or Filegroup Backup&apos;
+        ///         WHEN &apos;G&apos; THEN &apos;Diff File Backup&apos;
+        ///         WHEN &apos;P&apos; THEN &apos;Partial Backup&apos;
+        ///         WHEN &apos;Q&apos; THEN &apos;Diff Partial Backup&apos;
+        ///         ELSE &apos;Unknown [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string msdb_dbo_backupset_detail {
+            get {
+                return ResourceManager.GetString("msdb_dbo_backupset_detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   SELECT /*mssqlstats_v2*/
         ///  DB_NAME(database_id) AS database_name
         ///  ,　*
@@ -570,6 +594,30 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM sys.database_automatic_tuning_options
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_database_automatic_tuning_options {
+            get {
+                return ResourceManager.GetString("sys_database_automatic_tuning_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM sys.database_query_store_options
+        ///OPTION (RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_database_query_store_options {
+            get {
+                return ResourceManager.GetString("sys_database_query_store_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   SELECT /*mssqlstats_v1*/
         ///  * 
         ///FROM
@@ -613,6 +661,23 @@ namespace mssqlstats.Properties {
         internal static string sys_dm_database_encryption_keys {
             get {
                 return ResourceManager.GetString("sys_dm_database_encryption_keys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  OBJECT_NAME(cs.object_id) AS table_name
+        ///  , 100 * (ISNULL(cs.deleted_rows, 0))/cs.total_rows AS Fragmentation
+        ///  , cs.*
+        ///  , i.*
+        ///FROM sys.dm_db_column_store_row_group_physical_stats AS cs 
+        ///  INNER JOIN sys.indexes AS i ON cs.object_id = i.object_id  AND cs.index_id = i.index_id
+        ///ORDER BY cs.object_id, cs.partition_number, cs.row_group_id
+        ///OPTION (RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_db_column_store_row_group_physical_stats {
+            get {
+                return ResourceManager.GetString("sys_dm_db_column_store_row_group_physical_stats", resourceCulture);
             }
         }
         
@@ -868,31 +933,18 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
-        ///   SELECT TOP 500 /*mssqlstats_v1*/
-        ///  OBJECT_NAME(p.object_id) AS table_name
-        ///  , s.object_id
-        ///  , s.name AS stat_name 
-        ///  , p.last_updated
-        ///  , p.stats_id
-        ///  , s.auto_created
-        ///  , s.user_created
-        ///  , s.no_recompute
-        ///  , s.has_filter
-        ///  , s.filter_definition
-        ///  , s.is_temporary  /*SQL12～*/
-        ///  , p.rows
-        ///  , p.rows_sampled
-        ///  , (1.0 * p.rows) / p.rows_sampled as sample_rate
-        ///  , p.steps
-        ///  , p.unfiltered_rows
-        ///  , p.modification_counter
-        ///FROM sys.stats s 
-        ///  LEFT JOIN sys.objects o
-        ///    ON s.object_id = o.objec [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///   SELECT /*mssqlstats_v2*/
+        ///  OBJECT_NAME(i.object_id) AS table_name
+        ///  , xis.*
+        ///  , i.*
+        ///FROM sys.dm_db_xtp_index_stats AS xis 
+        ///  INNER JOIN sys.indexes AS i  ON i.object_id = xis.object_id AND i.index_id = xis.index_id 
+        ///ORDER BY i.object_id
+        ///OPTION (RECOMPILE) に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string sys_dm_db_stats_properties {
+        internal static string sys_dm_db_xtp_index_stats {
             get {
-                return ResourceManager.GetString("sys_dm_db_stats_properties", resourceCulture);
+                return ResourceManager.GetString("sys_dm_db_xtp_index_stats", resourceCulture);
             }
         }
         
@@ -986,6 +1038,25 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT TOP(10) /*mssqlstats_v2*/
+        ///   OBJECT_NAME(objectid) AS objname
+        ///   , cp.objtype
+        ///   , cp.usecounts
+        ///   , cp.size_in_bytes
+        ///   , CONVERT(xml, query_plan) AS query_plan
+        ///FROM sys.dm_exec_cached_plans AS cp
+        ///CROSS APPLY sys.dm_exec_query_plan(cp.plan_handle) AS qp
+        ///WHERE CAST(query_plan AS NVARCHAR(MAX)) LIKE N&apos;%MissingIndex%&apos; AND dbid = DB_ID()
+        ///ORDER BY cp.usecounts DESC 
+        ///OPTION (RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_cached_plans_warnings {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_cached_plans_warnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
         ///SELECT /*mssqlstats_v1*/
         ///  cur.* 
@@ -1067,11 +1138,53 @@ namespace mssqlstats.Properties {
         ///  , SUM(total_clr_time/1000) AS total_clr_time
         ///  , SUM(execution_count) AS execution_count
         ///  , SUM(plan_generation_num) AS plan_generation_num
-        ///- [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_summary_2 {
             get {
                 return ResourceManager.GetString("sys_dm_exec_query_stats_summary_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(dbid) AS dbname
+        ///  , dbid
+        ///  , COUNT(*) AS query_count
+        ///  , SUM(total_elapsed_time/1000) AS total_elapsed_time
+        ///  , SUM(total_worker_time/1000) AS total_worker_time
+        ///  , SUM(total_physical_reads) AS total_physical_reads
+        ///  , SUM(total_logical_reads) AS total_logical_reads
+        ///  , SUM(total_logical_writes) AS total_logical_writes
+        ///  , SUM(total_clr_time/1000) AS total_clr_time
+        ///  , SUM(execution_count) AS execution_count
+        ///  , SUM(plan_generation_num) AS plan_generation_num
+        ///  [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_summary_3 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_summary_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(dbid) AS dbname
+        ///  , dbid
+        ///  , COUNT(*) AS query_count
+        ///  , SUM(total_elapsed_time/1000) AS total_elapsed_time
+        ///  , SUM(total_worker_time/1000) AS total_worker_time
+        ///  , SUM(total_physical_reads) AS total_physical_reads
+        ///  , SUM(total_logical_reads) AS total_logical_reads
+        ///  , SUM(total_logical_writes) AS total_logical_writes
+        ///  , SUM(total_clr_time/1000) AS total_clr_time
+        ///  , SUM(execution_count) AS execution_count
+        ///  , SUM(plan_generation_num) AS plan_generation_num
+        ///F [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_summary_4 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_summary_4", resourceCulture);
             }
         }
         
@@ -1117,6 +1230,38 @@ namespace mssqlstats.Properties {
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
         ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
+        internal static string sys_dm_exec_query_stats_sysdb_3 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_sysdb_4 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
         internal static string sys_dm_exec_query_stats_sysdb_plan {
             get {
                 return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_plan", resourceCulture);
@@ -1136,6 +1281,38 @@ namespace mssqlstats.Properties {
         internal static string sys_dm_exec_query_stats_sysdb_plan_2 {
             get {
                 return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_plan_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_sysdb_plan_3 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_plan_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_sysdb_plan_4 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_sysdb_plan_4", resourceCulture);
             }
         }
         
@@ -1181,6 +1358,38 @@ namespace mssqlstats.Properties {
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
         ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
+        internal static string sys_dm_exec_query_stats_userdb_3 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_userdb_4 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
         internal static string sys_dm_exec_query_stats_userdb_plan {
             get {
                 return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_plan", resourceCulture);
@@ -1200,6 +1409,38 @@ namespace mssqlstats.Properties {
         internal static string sys_dm_exec_query_stats_userdb_plan_2 {
             get {
                 return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_plan_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_userdb_plan_3 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_plan_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
+        ///SELECT TOP 200 /*mssqlstats_v2*/
+        ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
+        ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
+        ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
+        ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
+        ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_userdb_plan_4 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_userdb_plan_4", resourceCulture);
             }
         }
         
@@ -1778,6 +2019,48 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  OBJECT_NAME(object_id) AS objname
+        ///  , partition_number
+        ///  , rows
+        ///  , data_compression_desc
+        ///  , filestream_filegroup_id
+        ///FROM sys.partitions
+        ///WHERE index_id &lt; 2 --ヒープもしくはクラスタ化インデックス
+        ///AND OBJECT_NAME(object_id) NOT LIKE N&apos;sys%&apos;
+        ///AND OBJECT_NAME(object_id) NOT LIKE N&apos;queue_%&apos; 
+        ///AND OBJECT_NAME(object_id) NOT LIKE N&apos;filestream_tombstone%&apos; 
+        ///AND OBJECT_NAME(object_id) NOT LIKE N&apos;fulltext%&apos;
+        ///AND OBJECT_NAME(object_id) NOT LIKE N&apos;ifts_comp_fragment%&apos;
+        ///AND OBJECT_NAME(object_id) NOT L [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_partitions {
+            get {
+                return ResourceManager.GetString("sys_partitions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /*mssqlstats_v2*/
+        ///WITH AggregatedDurationLastHour
+        ///AS(
+        ///  SELECT 
+        ///    q.query_id
+        ///	, SUM(count_executions * avg_duration) AS total_duration
+        ///	, COUNT (distinct p.plan_id) AS number_of_plans
+        ///  FROM sys.query_store_query_text AS qt
+        ///    INNER JOIN sys.query_store_query AS q ON qt.query_text_id = q.query_text_id
+        ///    INNER JOIN sys.query_store_plan AS p ON q.query_id = p.query_id
+        ///    INNER JOIN sys.query_store_runtime_stats AS rs ON rs.plan_id = p.plan_id
+        ///    INNER JOIN sys.query_store_runtime_stats_inter [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_query_store {
+            get {
+                return ResourceManager.GetString("sys_query_store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   SELECT /*mssqlstats_v1*/
         ///  *   
         ///FROM
@@ -1818,6 +2101,35 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   SELECT TOP 500 /*mssqlstats_v1*/
+        ///  OBJECT_NAME(p.object_id) AS table_name
+        ///  , s.object_id
+        ///  , s.name AS stat_name 
+        ///  , p.last_updated
+        ///  , p.stats_id
+        ///  , s.auto_created
+        ///  , s.user_created
+        ///  , s.no_recompute
+        ///  , s.has_filter
+        ///  , s.filter_definition
+        ///  , s.is_temporary  /*SQL12～*/
+        ///  , p.rows
+        ///  , p.rows_sampled
+        ///  , (1.0 * p.rows) / p.rows_sampled as sample_rate
+        ///  , p.steps
+        ///  , p.unfiltered_rows
+        ///  , p.modification_counter
+        ///FROM sys.stats s 
+        ///  LEFT JOIN sys.objects o
+        ///    ON s.object_id = o.objec [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_stats {
+            get {
+                return ResourceManager.GetString("sys_stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT TOP 500 /*mssqlstats_v1*/
         ///  o.name as table_name
         ///  , o.object_id
         ///  , s.name as stat_name
@@ -1839,9 +2151,9 @@ namespace mssqlstats.Properties {
         ///  last_updated ASC
         ///-- SQL12以降はsys.dm_db_s [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string sys_stats {
+        internal static string sys_stats_2 {
             get {
-                return ResourceManager.GetString("sys_stats", resourceCulture);
+                return ResourceManager.GetString("sys_stats_2", resourceCulture);
             }
         }
         

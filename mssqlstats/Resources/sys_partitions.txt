@@ -1,0 +1,19 @@
+SELECT /*mssqlstats_v2*/
+  OBJECT_NAME(object_id) AS objname
+  , partition_number
+  , rows
+  , data_compression_desc
+  , filestream_filegroup_id
+FROM sys.partitions
+WHERE index_id < 2 --ヒープもしくはクラスタ化インデックス
+AND OBJECT_NAME(object_id) NOT LIKE N'sys%'
+AND OBJECT_NAME(object_id) NOT LIKE N'queue_%' 
+AND OBJECT_NAME(object_id) NOT LIKE N'filestream_tombstone%' 
+AND OBJECT_NAME(object_id) NOT LIKE N'fulltext%'
+AND OBJECT_NAME(object_id) NOT LIKE N'ifts_comp_fragment%'
+AND OBJECT_NAME(object_id) NOT LIKE N'filetable_updates%'
+AND OBJECT_NAME(object_id) NOT LIKE N'xml_index_nodes%'
+AND OBJECT_NAME(object_id) NOT LIKE N'sqlagent_job%'  
+AND OBJECT_NAME(object_id) NOT LIKE N'plan_persist%'  
+ORDER BY rows DESC 
+OPTION (RECOMPILE)

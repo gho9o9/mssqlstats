@@ -1,0 +1,9 @@
+SELECT /*mssqlstats_v2*/
+  OBJECT_NAME(cs.object_id) AS table_name
+  , 100 * (ISNULL(cs.deleted_rows, 0))/cs.total_rows AS Fragmentation
+  , cs.*
+  , i.*
+FROM sys.dm_db_column_store_row_group_physical_stats AS cs 
+  INNER JOIN sys.indexes AS i ON cs.object_id = i.object_id  AND cs.index_id = i.index_id
+ORDER BY cs.object_id, cs.partition_number, cs.row_group_id
+OPTION (RECOMPILE)

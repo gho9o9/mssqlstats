@@ -16,6 +16,33 @@ SELECT TOP 200 /*mssqlstats_v2*/
   ,SUM(CAST(total_rows AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Rows" --SQL2012à»ç~(2008Ç‡SPìKópÇ≈ÉTÉ|Å[Égâ¬)
   ,MAX(CAST(max_rows AS numeric(38))) AS "Max Rows" --SQL2012à»ç~(2008Ç‡SPìKópÇ≈ÉTÉ|Å[Égâ¬)
   ,MIN(CAST(min_rows AS numeric(38))) AS "Min Rows" --SQL2012à»ç~(2008Ç‡SPìKópÇ≈ÉTÉ|Å[Égâ¬)
+  ,SUM(CAST(total_dop AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg DOP" --SQL2016à»ç~
+  ,MAX(CAST(max_dop AS numeric(38))) AS "Max DOP" --SQL2016à»ç~
+  ,MIN(CAST(min_dop AS numeric(38))) AS "Min DOP" --SQL2016à»ç~
+  ,SUM(CAST(total_grant_kb AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Grant_KB" --SQL2016à»ç~
+  ,MAX(CAST(max_grant_kb AS numeric(38))) AS "Max Grant_KB" --SQL2016à»ç~
+  ,MIN(CAST(min_grant_kb AS numeric(38))) AS "Min Grant_KB" --SQL2016à»ç~
+  ,SUM(CAST(total_used_grant_kb AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Used Grant_KB" --SQL2016à»ç~
+  ,MAX(CAST(max_used_grant_kb AS numeric(38))) AS "Max Used Grant_KB" --SQL2016à»ç~
+  ,MIN(CAST(min_used_grant_kb AS numeric(38))) AS "Min Used Grant_KB" --SQL2016à»ç~
+  ,SUM(CAST(total_ideal_grant_kb AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Ideal Grant_KB" --SQL2016à»ç~
+  ,MAX(CAST(max_ideal_grant_kb AS numeric(38))) AS "Max Ideal Grant_KB" --SQL2016à»ç~
+  ,MIN(CAST(min_ideal_grant_kb AS numeric(38))) AS "Min Ideal Grant_KB" --SQL2016à»ç~
+  ,SUM(CAST(total_reserved_threads AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Reserved Threads" --SQL2016à»ç~
+  ,MAX(CAST(min_reserved_threads AS numeric(38))) AS "Max Reserved Threads" --SQL2016à»ç~
+  ,MIN(CAST(max_reserved_threads AS numeric(38))) AS "Min Reserved Threads" --SQL2016à»ç~
+  ,SUM(CAST(total_used_threads AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Used Threads" --SQL2016à»ç~
+  ,MAX(CAST(max_used_threads AS numeric(38))) AS "Max Used Threads" --SQL2016à»ç~
+  ,MIN(CAST(min_used_threads AS numeric(38))) AS "Min Used Threads" --SQL2016à»ç~
+  ,SUM(CAST(total_spills AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Spills" --SQL2017CU3à»ç~
+  ,MAX(CAST(max_spills AS numeric(38))) AS "Max Spills" --SQL2017CU3à»ç~
+  ,MIN(CAST(min_spills AS numeric(38))) AS "Min Spills" --SQL2017CU3à»ç~
+  ,SUM(CAST(total_columnstore_segment_skips AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Col Seg Skips" --SQL2017CU3à»ç~
+  ,MAX(CAST(max_columnstore_segment_skips AS numeric(38))) AS "Max Col Seg Skips" --SQL2017CU3à»ç~
+  ,MIN(CAST(min_columnstore_segment_skips AS numeric(38))) AS "Min Col Seg Skips" --SQL2017CU3à»ç~
+  ,SUM(CAST(total_columnstore_segment_reads AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) AS "Avg Col Seg Reads" --SQL2017CU3à»ç~
+  ,MAX(CAST(max_columnstore_segment_reads AS numeric(38))) AS "Max Col Seg Reads" --SQL2017CU3à»ç~
+  ,MIN(CAST(min_columnstore_segment_reads AS numeric(38))) AS "Min Col Seg Reads" --SQL2017CU3à»ç~
   , MIN(text) AS "Text"
   , MIN(objtype) AS "Text Object Type"
   , MIN(cacheobjtype) AS "Text Object Cache Type"
@@ -28,6 +55,14 @@ FROM
       , total_physical_reads, total_logical_reads, total_logical_writes, total_clr_time
       , execution_count, plan_generation_num, creation_time, query_hash
       , total_rows, min_rows, max_rows --SQL2012à»ç~(2008Ç‡SPìKópÇ≈ÉTÉ|Å[Égâ¬)
+	  , total_dop, min_dop, max_dop --SQL2016à»ç~
+	  , total_grant_kb, min_grant_kb, max_grant_kb --SQL2016à»ç~
+	  , total_used_grant_kb, min_used_grant_kb, max_used_grant_kb --SQL2016à»ç~
+	  , total_ideal_grant_kb, min_ideal_grant_kb, max_ideal_grant_kb --SQL2016à»ç~
+	  , total_reserved_threads, min_reserved_threads, max_reserved_threads --SQL2016à»ç~
+	  , total_used_threads, min_used_threads, max_used_threads --SQL2016à»ç~
+	  , total_columnstore_segment_skips, min_columnstore_segment_skips, max_columnstore_segment_skips --SQL2017CU3à»ç~
+	  , total_columnstore_segment_reads, min_columnstore_segment_reads, max_columnstore_segment_reads --SQL2017CU3à»ç~
       , SUBSTRING(qt.text, (statement_start_offset/2) + 1,
         ((CASE statement_end_offset 
           WHEN -1 THEN DATALENGTH(qt.text)

@@ -11,6 +11,15 @@ SELECT /*mssqlstats_v2*/
   , SUM(execution_count) AS execution_count
   , SUM(plan_generation_num) AS plan_generation_num
   , SUM(total_rows) AS  total_rows --SQL2012ˆÈ~(2008‚àSP“K—p‚ÅƒTƒ|[ƒg‰Â)
+  , SUM(total_dop) AS  total_dop --SQL2016ˆÈ~
+  , SUM(total_grant_kb) AS  total_grant_kb --SQL2016ˆÈ~
+  , SUM(total_used_grant_kb) AS  total_used_grant_kb --SQL2016ˆÈ~
+  , SUM(total_ideal_grant_kb) AS  total_ideal_grant_kb --SQL2016ˆÈ~
+  , SUM(total_reserved_threads) AS  total_reserved_threads --SQL2016ˆÈ~
+  , SUM(total_used_threads) AS  total_used_threads --SQL2016ˆÈ~
+  , SUM(total_spills) AS  total_spills --SQL2017CU3ˆÈ~
+  , SUM(total_columnstore_segment_skips) AS  total_columnstore_segment_skips --SQL2017CU3ˆÈ~
+  , SUM(total_columnstore_segment_reads) AS  total_columnstore_segment_reads --SQL2017CU3ˆÈ~
 FROM sys.dm_exec_query_stats qs
   CROSS APPLY sys.dm_exec_sql_text(plan_handle) qt -- sql_handle‚¾‚ÆadhocƒNƒGƒŠ‚Ìdbid‚ªnull‚Å•Ô‚Á‚Ä‚µ‚Ü‚¤‚Ì‚Åplan_handle‚ğg‚¤B
 GROUP BY dbid

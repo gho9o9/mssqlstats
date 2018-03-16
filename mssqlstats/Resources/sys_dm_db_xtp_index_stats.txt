@@ -1,0 +1,8 @@
+SELECT /*mssqlstats_v2*/
+  OBJECT_NAME(i.object_id) AS table_name
+  , xis.*
+  , i.*
+FROM sys.dm_db_xtp_index_stats AS xis 
+  INNER JOIN sys.indexes AS i  ON i.object_id = xis.object_id AND i.index_id = xis.index_id 
+ORDER BY i.object_id
+OPTION (RECOMPILE)

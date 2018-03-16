@@ -1,0 +1,22 @@
+SELECT TOP 500 /*mssqlstats_v1*/
+  o.name as table_name
+  , o.object_id
+  , s.name as stat_name
+  , STATS_DATE(s.object_id, s.stats_id) as last_updated
+  , s.stats_id
+  , s.auto_created 
+  , s.user_created 
+  , s.no_recompute
+  , s.has_filter
+  , s.filter_definition
+  --, s.is_temporary  /*SQL12Å`*/
+FROM sys.stats AS s 
+  LEFT JOIN sys.objects AS o 
+    ON s.object_id = o.object_id 
+WHERE 
+  type = 'U'
+--AND s.name NOT LIKE ('_WA_Sys_%')
+ORDER BY 
+  last_updated ASC
+-- SQL12à»ç~ÇÕsys.dm_db_stats_properties
+OPTION(RECOMPILE)

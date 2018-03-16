@@ -10,13 +10,6 @@ SELECT /*mssqlstats_v2*/
   , SUM(total_clr_time/1000) AS total_clr_time
   , SUM(execution_count) AS execution_count
   , SUM(plan_generation_num) AS plan_generation_num
-  , SUM(total_rows) AS  total_rows --SQL2012以降(2008もSP適用でサポート可)
-  , SUM(total_dop) AS  total_dop --SQL2016以降
-  , SUM(total_grant_kb) AS  total_grant_kb --SQL2016以降
-  , SUM(total_used_grant_kb) AS  total_used_grant_kb --SQL2016以降
-  , SUM(total_ideal_grant_kb) AS  total_ideal_grant_kb --SQL2016以降
-  , SUM(total_reserved_threads) AS  total_reserved_threads --SQL2016以降
-  , SUM(total_used_threads) AS  total_used_threads --SQL2016以降
 FROM sys.dm_exec_query_stats qs
   CROSS APPLY sys.dm_exec_sql_text(plan_handle) qt -- sql_handleだとadhocクエリのdbidがnullで返ってしまうのでplan_handleを使う。
 GROUP BY dbid

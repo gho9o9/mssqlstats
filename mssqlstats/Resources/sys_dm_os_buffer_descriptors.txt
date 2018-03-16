@@ -1,0 +1,27 @@
+SELECT /*mssqlstats_v2*/
+  DB_NAME(database_id) AS dbname
+  , COUNT_BIG(*) AS cached_pages
+  , CAST(COUNT_BIG(*) * 8/1024.0 AS DECIMAL (10,2))  AS cached_size_mb
+  , AVG(read_microsec) AS avg_read_microsec
+FROM sys.dm_os_buffer_descriptors
+WHERE database_id <> 32767 -- ResourceDb
+GROUP BY DB_NAME(database_id)
+ORDER BY cached_pages DESC
+OPTION(RECOMPILE)
+/*
+オブジェクトごとなら↓
+select top 50 b.database_id, db=db_name(b.database_id)
+  ,p.object_id
+  ,object_name(p.object_id) as objname
+  ,p.index_id
+  ,buffer_count=count(*)
+from sys.allocation_units a,
+  sys.dm_os_buffer_descriptors b,
+  sys.partitions p
+where a.allocation_unit_id = b.allocation_unit_id
+and a.container_id = p.hobt_id
+and b.database_id=(select d.database_id from sys.databases d
+where d.name = ''<dbname>'')
+group by b.database_id,p.object_id, p.index_id
+order by buffer_count desc
+*/

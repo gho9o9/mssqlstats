@@ -1,0 +1,19 @@
+SELECT /*mssqlstats_v2*/
+  g.name AS ag_name
+  , c.database_name 
+  , r.replica_server_name
+  , r.availability_mode_desc
+  , s.*
+  , g.*
+  , r.*
+  , c.*
+FROM sys.dm_hadr_database_replica_states AS s
+  INNER JOIN sys.availability_databases_cluster AS c
+    ON s.group_id = c.group_id 
+    AND s.group_database_id = c.group_database_id
+  INNER JOIN sys.availability_groups AS g
+    ON g.group_id = s.group_id
+  INNER JOIN sys.availability_replicas AS r
+    ON s.group_id = r.group_id 
+    AND s.replica_id = r.replica_id
+OPTION (RECOMPILE)

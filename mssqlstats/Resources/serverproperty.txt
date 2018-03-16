@@ -1,13 +1,20 @@
 SELECT /*mssqlstats_v1*/
-@@VERSION AS Version,
-SERVERPROPERTY('processid') AS PID,
-SERVERPROPERTY('Collation') AS Collation,
-SERVERPROPERTY('ComputerNamePhysicalNetBIOS') AS ComputerNamePhysicalNetBIOS,
-SERVERPROPERTY('HadrManagerStatus') AS HadrManagerStatus,
-SERVERPROPERTY('InstanceName') AS InstanceName,
-SERVERPROPERTY('IsClustered') AS IsClustered,
-SERVERPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled,
-SERVERPROPERTY('IsHadrEnabled') AS IsHadrEnabled,
-SERVERPROPERTY('IsIntegratedSecurityOnly') AS IsIntegratedSecurityOnly,
-SERVERPROPERTY('MachineName') AS MachineName,
-SERVERPROPERTY('ServerName') AS ServerName
+  @@VERSION AS Version
+, SERVERPROPERTY('MachineName') AS MachineName
+, SERVERPROPERTY('ServerName') AS ServerName
+, SERVERPROPERTY('ComputerNamePhysicalNetBIOS') AS ComputerNamePhysicalNetBIOS
+, SERVERPROPERTY('InstanceName') AS InstanceName
+, SERVERPROPERTY('InstanceDefaultDataPath') AS InstanceDefaultDataPath
+, SERVERPROPERTY('InstanceDefaultLogPath') AS InstanceDefaultLogPath
+, SERVERPROPERTY('processid') AS PID
+, SERVERPROPERTY('Collation') AS Collation
+, SERVERPROPERTY('IsIntegratedSecurityOnly') AS IsIntegratedSecurityOnly
+, SERVERPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled
+, SERVERPROPERTY('IsClustered') AS IsClustered
+, SERVERPROPERTY('IsHadrEnabled') AS IsHadrEnabled
+, SERVERPROPERTY('HadrManagerStatus') AS HadrManagerStatus
+, SERVERPROPERTY('IsXTPSupported') AS IsXTPSupported
+, SERVERPROPERTY('IsPolybaseInstalled') AS IsPolybaseInstalled
+, SERVERPROPERTY('IsAdvancedAnalyticsInstalled') AS IsAdvancedAnalyticsInstalled
+, SERVERPROPERTY('FilestreamConfiguredLevel') AS FilestreamConfiguredLevel
+, SERVERPROPERTY('BuildClrVersion') AS BuildClrVersion

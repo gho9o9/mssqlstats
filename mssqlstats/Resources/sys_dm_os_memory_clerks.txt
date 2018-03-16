@@ -1,0 +1,14 @@
+SELECT /*mssqlstats_v2*/
+  type
+  , COUNT(*)  AS count
+  , CAST((SUM(pages_kb)/1024.0) AS DECIMAL (15,2)) AS used_size_mb
+  , CAST((SUM(virtual_memory_reserved_kb)/1024.0) AS DECIMAL (15,2)) AS vm_reserved_size_mb
+  , CAST((SUM(virtual_memory_committed_kb)/1024.0) AS DECIMAL (15,2)) AS vm_committed_size_mb
+  , CAST((SUM(awe_allocated_kb)/1024.0) AS DECIMAL (15,2)) AS awe_allocated_size_mb
+  , CAST((SUM(shared_memory_reserved_kb)/1024.0) AS DECIMAL (15,2)) AS sm_reserved_size_mb
+  , CAST((SUM(shared_memory_committed_kb)/1024.0) AS DECIMAL (15,2)) AS sm_committed_size_mb
+FROM sys.dm_os_memory_clerks
+WHERE pages_kb >= 16384 -- 16MBˆÈã‚ÅƒtƒBƒ‹ƒ^
+GROUP BY type
+ORDER BY 3 DESC
+OPTION (RECOMPILE)

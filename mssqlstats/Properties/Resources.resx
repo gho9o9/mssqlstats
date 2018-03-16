@@ -118,277 +118,319 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dbcc_sqlperf_logspace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dbcc_sqlperf_logspace.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="dbcc_tracestatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dbcc_tracestatus.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="readerrorlog_num_of_phisical_cores" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\readerrorlog_num_of_phisical_cores.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="serverproperty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\serverproperty.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sp_spaceused_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sp_spaceused_database.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sp_spaceused_object" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sp_spaceused_object.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_configurations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_configurations.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_databases" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_databases.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_database_scoped_configurations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_database_scoped_configurations.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_partition_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_partition_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_nodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_nodes.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_sys_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_sys_info.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_windows_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_windows_info.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_master_files" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_master_files.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="xp_regread_preferred_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\xp_regread_preferred_plan.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
   <data name="dbcc_dbinfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dbcc_dbinfo.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_backupset" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_backupset.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_backupset_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_backupset_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysalerts" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysalerts.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_syscollector_collection_items" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_syscollector_collection_items.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_syscollector_collection_sets" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_syscollector_collection_sets.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysjobschedules" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysjobschedules.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysjobsteps" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysjobsteps.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysmaintplan_plans" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysmaintplan_plans.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysoperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysoperators.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysproxies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysproxies.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="msdb_dbo_sysschedules" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\msdb_dbo_sysschedules.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_file_space_usage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_file_space_usage.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_operational_stats_lock_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_operational_stats_lock_sysdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_operational_stats_lock_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_operational_stats_lock_userdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_operational_stats_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_operational_stats_sysdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_operational_stats_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_operational_stats_userdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_physical_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_physical_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_index_usage_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_index_usage_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_missing_index" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_missing_index.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_stats_properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_stats_properties.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_cached_plans_reused_ratio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_cached_plans_reused_ratio.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_cached_plans_size" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_cached_plans_size.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_cached_plans_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_cached_plans_sysdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_cached_plans_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_cached_plans_userdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_cursors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_cursors.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_memory_grants" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_memory_grants.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_optimizer_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_optimizer_info.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_io_virtual_file_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_io_virtual_file_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_latch_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_latch_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_memory_cache_clock_hands" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_memory_cache_clock_hands.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_memory_cache_clock_hands_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_memory_cache_clock_hands_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_performance_counters_batch_resp_statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_performance_counters_batch_resp_statistics.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_process_memory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_process_memory.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_ring_buffers" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_ring_buffers.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_schedulers" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_schedulers.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_spinlock_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_spinlock_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_sys_memory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_sys_memory.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_wait_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_wait_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_wait_stats_ratio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_wait_stats_ratio.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_os_workers" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_os_workers.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_tran_database_transactions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_tran_database_transactions.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_indexes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_indexes.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_master_files_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_master_files_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_resource_governor_configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_resource_governor_configuration.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_resource_governor_resource_pools" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_resource_governor_resource_pools.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_resource_governor_workload_groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_resource_governor_workload_groups.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_stats.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="_DBCC_SQLPERF_CLEAR_STATS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_DBCC_SQLPERF_CLEAR_STATS.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="_GET_DB_NAME_LIST" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_GET_DB_NAME_LIST.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="_GET_PRODUCT_VERSION" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_GET_PRODUCT_VERSION.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="_SET_TRANSACTION_ISOLATION_LEVEL_READUNCOMMITTED" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_SET_TRANSACTION_ISOLATION_LEVEL_READUNCOMMITTED.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="wmi_win32_service" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wmi_win32_service.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="_SET_LOCK_TIMEOUT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_SET_LOCK_TIMEOUT.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="wmi_win32_bios" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wmi_win32_bios.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_db_persisted_sku_features" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_db_persisted_sku_features.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_server_services" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_server_services.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_tcp_listener_states" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_tcp_listener_states.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="readerrorlog_ifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\readerrorlog_ifi.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_database_encryption_keys" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_database_encryption_keys.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_server_memory_dumps" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_server_memory_dumps.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_server_registry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_server_registry.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_xp_enumerrorlogs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_xp_enumerrorlogs.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_xp_instance_regread_processornamestring" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_xp_instance_regread_processornamestring.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="wmi_win32_powerplan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wmi_win32_powerplan.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_sysdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_sysdb_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_sysdb_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_sysdb_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_sysdb_plan.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_sysdb_plan_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_sysdb_plan_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_userdb.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_userdb_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_userdb_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_userdb_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_userdb_plan.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
-  </data>
-  <data name="sys_dm_exec_query_stats_userdb_plan_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sys_dm_exec_query_stats_userdb_plan_2.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+    <value>..\Resources\dbcc_dbinfo.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
   <data name="dbcc_loginfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dbcc_loginfo.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="dbcc_sqlperf_logspace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dbcc_sqlperf_logspace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="dbcc_tracestatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dbcc_tracestatus.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_backupset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_backupset.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_backupset_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_backupset_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_suspect_pages" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_suspect_pages.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysalerts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysalerts.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_syscollector_collection_items" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_syscollector_collection_items.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_syscollector_collection_sets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_syscollector_collection_sets.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysjobschedules" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysjobschedules.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysjobsteps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysjobsteps.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysmaintplan_plans" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysmaintplan_plans.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysoperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysoperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysproxies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysproxies.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="msdb_dbo_sysschedules" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msdb_dbo_sysschedules.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="readerrorlog_ifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\readerrorlog_ifi.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="readerrorlog_iostall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\readerrorlog_iostall.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="readerrorlog_manufacturer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\readerrorlog_manufacturer.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="readerrorlog_num_of_phisical_cores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\readerrorlog_num_of_phisical_cores.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="serverproperty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\serverproperty.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sp_spaceused_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sp_spaceused_database.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sp_spaceused_object" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sp_spaceused_object.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_availability_groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_availability_groups.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_configurations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_configurations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_databases" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_databases.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_database_scoped_configurations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_database_scoped_configurations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_database_encryption_keys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_database_encryption_keys.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_file_space_usage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_file_space_usage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_operational_stats_lock_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_operational_stats_lock_sysdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_operational_stats_lock_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_operational_stats_lock_userdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_operational_stats_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_operational_stats_sysdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_operational_stats_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_operational_stats_userdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_physical_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_physical_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_index_usage_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_index_usage_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
   <data name="sys_dm_db_log_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sys_dm_db_log_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
   <data name="sys_dm_db_log_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sys_dm_db_log_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_missing_index" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_missing_index.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_partition_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_partition_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_persisted_sku_features" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_persisted_sku_features.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_db_stats_properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_db_stats_properties.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_cached_plans_reused_ratio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_cached_plans_reused_ratio.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_cached_plans_size" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_cached_plans_size.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_cached_plans_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_cached_plans_sysdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_cached_plans_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_cached_plans_userdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_cursors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_cursors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_memory_grants" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_memory_grants.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_optimizer_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_optimizer_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_summary.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_summary_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_summary_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_sysdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_sysdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_sysdb_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_sysdb_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_sysdb_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_sysdb_plan.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_sysdb_plan_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_sysdb_plan_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_userdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_userdb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_userdb_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_userdb_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_userdb_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_userdb_plan.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_exec_query_stats_userdb_plan_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_exec_query_stats_userdb_plan_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_hadr_cluster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_hadr_cluster.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_io_virtual_file_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_io_virtual_file_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_io_virtual_file_stats_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_io_virtual_file_stats_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_buffer_descriptors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_buffer_descriptors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_buffer_pool_extension_configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_buffer_pool_extension_configuration.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_cluster_nodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_cluster_nodes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_host_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_host_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_latch_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_latch_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_memory_cache_clock_hands" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_memory_cache_clock_hands.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_memory_cache_clock_hands_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_memory_cache_clock_hands_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_memory_clerks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_memory_clerks.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_nodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_nodes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_performance_counters_batch_resp_statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_performance_counters_batch_resp_statistics.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_process_memory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_process_memory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_ring_buffers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_ring_buffers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_schedulers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_schedulers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_spinlock_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_spinlock_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_sys_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_sys_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_sys_memory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_sys_memory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_wait_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_wait_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_wait_stats_ratio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_wait_stats_ratio.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_windows_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_windows_info.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_os_workers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_os_workers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_server_memory_dumps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_server_memory_dumps.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_server_registry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_server_registry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_server_services" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_server_services.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_tcp_listener_states" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_tcp_listener_states.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_dm_tran_database_transactions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_dm_tran_database_transactions.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_indexes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_indexes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_master_files" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_master_files.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_master_files_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_master_files_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_resource_governor_configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_resource_governor_configuration.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_resource_governor_resource_pools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_resource_governor_resource_pools.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_resource_governor_workload_groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_resource_governor_workload_groups.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_stats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_stats.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_xp_enumerrorlogs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_xp_enumerrorlogs.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_xp_instance_regread_biosreleasedate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_xp_instance_regread_biosreleasedate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="sys_xp_instance_regread_processornamestring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys_xp_instance_regread_processornamestring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="wmi_win32_bios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wmi_win32_bios.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="wmi_win32_powerplan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wmi_win32_powerplan.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="wmi_win32_service" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wmi_win32_service.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="xp_regread_preferred_plan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xp_regread_preferred_plan.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="_DBCC_SQLPERF_CLEAR_STATS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_DBCC_SQLPERF_CLEAR_STATS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="_GET_DB_NAME_LIST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_GET_DB_NAME_LIST.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="_GET_PRODUCT_VERSION" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_GET_PRODUCT_VERSION.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="_SET_LOCK_TIMEOUT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_SET_LOCK_TIMEOUT.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="_SET_TRANSACTION_ISOLATION_LEVEL_READUNCOMMITTED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_SET_TRANSACTION_ISOLATION_LEVEL_READUNCOMMITTED.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
 </root>

@@ -1,7 +1,7 @@
 ﻿＜ツールの動作要件＞
 
-    ● 対象DB：SQL Server 2005、SQL Server 2008、SQL Server 2008 R2
-               SQL Server 2012、SQL Server 2014、SQL Server 2016
+    ● 対象DB：SQL Server 2005、SQL Server 2008、SQL Server 2008 R2、SQL Server 2012
+               SQL Server 2014、SQL Server 2016、SQL Server 2017
 
     ● 対象OS：上記の SQL Server がサポートするOSに準じます。
 

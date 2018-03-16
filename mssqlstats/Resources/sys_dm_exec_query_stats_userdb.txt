@@ -1,5 +1,5 @@
 USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-SELECT TOP 100
+SELECT TOP 200 /*mssqlstats_v2*/
   DB_NAME(MIN(dbid)) AS "DB Name"
   ,MIN(statement_text) AS "Statement Text"
   ,MAX(last_execution_time) AS "Last Exec Time"
@@ -27,7 +27,7 @@ FROM
       total_elapsed_time, total_worker_time
       , total_physical_reads, total_logical_reads, total_logical_writes, total_clr_time
       , execution_count, plan_generation_num, creation_time, query_hash
-      , total_rows, min_rows, max_rows --SQL2008以降
+      , total_rows, min_rows, max_rows --SQL2012以降(2008もSP適用でサポート可)
       , SUBSTRING(qt.text, (statement_start_offset/2) + 1,
         ((CASE statement_end_offset 
           WHEN -1 THEN DATALENGTH(qt.text)
@@ -40,10 +40,10 @@ FROM
 --    , qp.query_plan  -- プラン出力
     FROM sys.dm_exec_query_stats qs
       LEFT JOIN sys.dm_exec_cached_plans cp ON qs.plan_handle = cp.plan_handle
-      CROSS APPLY sys.dm_exec_sql_text(sql_handle) qt
+      CROSS APPLY sys.dm_exec_sql_text(qs.plan_handle) qt -- sql_handleだとadhocクエリのdbidがnullで返ってしまうのでplan_handleを使う。
 --    CROSS APPLY sys.dm_exec_text_query_plan(cp.plan_handle, DEFAULT, DEFAULT) qp  -- プラン出力
-    WHERE db_name(qt.dbid) not in ('msdb','master','tempdb') AND qt.dbid IS NOT NULL AND qt.dbid <> 32767 --Resource DBのdbidは常に 32767 固定 
---  WHERE db_name(qt.dbid) in ('msdb','master','tempdb') OR qt.dbid IS NULL OR qt.dbid = 32767 --Resource DBのdbidは常に 32767 固定
+    WHERE db_name(qt.dbid) not in ('msdb','master','tempdb') AND qt.dbid <> 32767 --Resource DBのdbidは常に 32767 固定 
+--  WHERE db_name(qt.dbid) in ('msdb','master','tempdb') OR qt.dbid = 32767 --Resource DBのdbidは常に 32767 固定
     /*
      -- CPUコストの高い Hash Match や Sort に絞る場合はここのコメントブロックを外す
     WHERE 

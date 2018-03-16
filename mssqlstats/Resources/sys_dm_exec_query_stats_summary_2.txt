@@ -1,0 +1,18 @@
+SELECT /*mssqlstats_v2*/
+  DB_NAME(dbid) AS dbname
+  , dbid
+  , COUNT(*) AS query_count
+  , SUM(total_elapsed_time/1000) AS total_elapsed_time
+  , SUM(total_worker_time/1000) AS total_worker_time
+  , SUM(total_physical_reads) AS total_physical_reads
+  , SUM(total_logical_reads) AS total_logical_reads
+  , SUM(total_logical_writes) AS total_logical_writes
+  , SUM(total_clr_time/1000) AS total_clr_time
+  , SUM(execution_count) AS execution_count
+  , SUM(plan_generation_num) AS plan_generation_num
+--, SUM(total_rows) AS  total_rows --SQL2012以降(2008もSP適用でサポート可)
+FROM sys.dm_exec_query_stats qs
+  CROSS APPLY sys.dm_exec_sql_text(plan_handle) qt -- sql_handleだとadhocクエリのdbidがnullで返ってしまうのでplan_handleを使う。
+GROUP BY dbid
+ORDER BY dbid
+OPTION(RECOMPILE)

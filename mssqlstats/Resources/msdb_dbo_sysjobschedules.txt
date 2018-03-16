@@ -1,5 +1,22 @@
-SELECT /*mssqlstats_v1*/
-  *
-FROM
-  msdb.dbo.sysjobschedules
-OPTION(RECOMPILE)
+SELECT /*mssqlstats_v2*/
+    j.name AS JobName
+  , j.description AS JobDesc
+  , j.enabled AS JobEnabled
+  , j.date_created AS JobCreated
+  , j.date_modified AS JobModified
+  , SUSER_SNAME(j.owner_sid) AS JobOwner
+  , c.name AS JobCategory
+  , s.enabled AS ScheduleEnabled
+  , js.next_run_date
+  , js.next_run_time
+  , j.*
+  , s.*
+FROM msdb.dbo.sysjobs AS j
+  INNER JOIN msdb.dbo.syscategories AS c
+    ON j.category_id = c.category_id
+  LEFT OUTER JOIN msdb.dbo.sysjobschedules AS js
+    ON j.job_id = js.job_id
+  LEFT OUTER JOIN msdb.dbo.sysschedules AS s
+    ON js.schedule_id = s.schedule_id
+ORDER BY j.job_id
+OPTION (RECOMPILE)

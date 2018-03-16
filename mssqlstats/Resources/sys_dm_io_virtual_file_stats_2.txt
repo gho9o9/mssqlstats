@@ -18,8 +18,8 @@ SELECT /*mssqlstats_v2*/
   , io_stall AS total_io_latency_ms
   , io_stall_read_ms AS total_read_latency_ms
   , io_stall_write_ms AS total_write_latency_ms
-  , io_stall_queued_read_ms   -- リソースガバナで強制された遅延（SQL2014以降）
-  , io_stall_queued_write_ms  -- リソースガバナで強制された遅延（SQL2014以降）
+  -- , io_stall_queued_read_ms   -- リソースガバナで強制された遅延（SQL2014以降）
+  -- , io_stall_queued_write_ms  -- リソースガバナで強制された遅延（SQL2014以降）
   , CASE WHEN (num_of_reads + num_of_writes) = 0 THEN 0 
     ELSE (io_stall/(num_of_reads + num_of_writes)) END AS avg_io_latency_ms
   , CASE WHEN num_of_reads = 0 THEN 0 

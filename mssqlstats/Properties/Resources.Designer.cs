@@ -240,6 +240,20 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(database_id) AS database_name
+        ///  ,　*
+        ///FROM
+        ///  msdb.dbo.suspect_pages
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string msdb_dbo_suspect_pages {
+            get {
+                return ResourceManager.GetString("msdb_dbo_suspect_pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   SELECT /*mssqlstats_v1*/
         ///  *   
         ///FROM
@@ -279,11 +293,24 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
-        ///   SELECT /*mssqlstats_v1*/
-        ///  *
-        ///FROM
-        ///  msdb.dbo.sysjobschedules
-        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        ///   SELECT /*mssqlstats_v2*/
+        ///    j.name AS JobName
+        ///  , j.description AS JobDesc
+        ///  , j.enabled AS JobEnabled
+        ///  , j.date_created AS JobCreated
+        ///  , j.date_modified AS JobModified
+        ///  , SUSER_SNAME(j.owner_sid) AS JobOwner
+        ///  , c.name AS JobCategory
+        ///  , s.enabled AS ScheduleEnabled
+        ///  , js.next_run_date
+        ///  , js.next_run_time
+        ///  , j.*
+        ///  , s.*
+        ///FROM msdb.dbo.sysjobs AS j
+        ///  INNER JOIN msdb.dbo.syscategories AS c
+        ///    ON j.category_id = c.category_id
+        ///  LEFT OUTER JOIN msdb.dbo.sysjobschedules AS js
+        ///    ON j.jo [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string msdb_dbo_sysjobschedules {
             get {
@@ -368,11 +395,51 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   /*mssqlstats_v1*/
-        ///EXEC sys.xp_readerrorlog 0, 1, N&apos;Database Instant File Initialization: enabled&apos; に類似しているローカライズされた文字列を検索します。
+        ///EXEC sys.xp_readerrorlog 0, 1, N&apos;Database Instant File Initialization&apos; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string readerrorlog_ifi {
             get {
                 return ResourceManager.GetString("readerrorlog_ifi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /*mssqlstats_v2*/
+        ///CREATE TABLE #iostall(LogDate datetime, ProcessInfo sysname, Text nvarchar(1000))
+        ///
+        ///INSERT INTO #iostall 
+        ///  EXEC xp_readerrorlog 0, 1, N&apos;taking longer than 15 seconds&apos;
+        ///
+        ////*
+        ///INSERT INTO #iostall 
+        ///  EXEC xp_readerrorlog 1, 1, N&apos;taking longer than 15 seconds&apos;;
+        ///
+        ///INSERT INTO #iostall 
+        ///  EXEC xp_readerrorlog 2, 1, N&apos;taking longer than 15 seconds&apos;;
+        ///
+        ///・・・負荷を考慮し過去にはさかのぼらない
+        ///*/
+        ///
+        ///SELECT LogDate, ProcessInfo, Text
+        ///FROM #iostall
+        ///ORDER BY LogDate DESC
+        ///
+        ///DROP TABLE #iostall
+        /// に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string readerrorlog_iostall {
+            get {
+                return ResourceManager.GetString("readerrorlog_iostall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /*mssqlstats_v2*/
+        ///EXEC sys.xp_readerrorlog 0, 1, N&apos;Manufacturer&apos; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string readerrorlog_manufacturer {
+            get {
+                return ResourceManager.GetString("readerrorlog_manufacturer", resourceCulture);
             }
         }
         
@@ -388,16 +455,16 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   SELECT /*mssqlstats_v1*/
-        ///@@VERSION AS Version,
-        ///SERVERPROPERTY(&apos;processid&apos;) AS PID,
-        ///SERVERPROPERTY(&apos;Collation&apos;) AS Collation,
-        ///SERVERPROPERTY(&apos;ComputerNamePhysicalNetBIOS&apos;) AS ComputerNamePhysicalNetBIOS,
-        ///SERVERPROPERTY(&apos;HadrManagerStatus&apos;) AS HadrManagerStatus,
-        ///SERVERPROPERTY(&apos;InstanceName&apos;) AS InstanceName,
-        ///SERVERPROPERTY(&apos;IsClustered&apos;) AS IsClustered,
-        ///SERVERPROPERTY(&apos;IsFullTextInstalled&apos;) AS IsFullTextInstalled,
-        ///SERVERPROPERTY(&apos;IsHadrEnabled&apos;) AS IsHadrEnabled,
-        ///SERVERPROPERTY(&apos;IsIntegratedSecurit [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  @@VERSION AS Version
+        ///, SERVERPROPERTY(&apos;MachineName&apos;) AS MachineName
+        ///, SERVERPROPERTY(&apos;ServerName&apos;) AS ServerName
+        ///, SERVERPROPERTY(&apos;ComputerNamePhysicalNetBIOS&apos;) AS ComputerNamePhysicalNetBIOS
+        ///, SERVERPROPERTY(&apos;InstanceName&apos;) AS InstanceName
+        ///, SERVERPROPERTY(&apos;InstanceDefaultDataPath&apos;) AS InstanceDefaultDataPath
+        ///, SERVERPROPERTY(&apos;InstanceDefaultLogPath&apos;) AS InstanceDefaultLogPath
+        ///, SERVERPROPERTY(&apos;processid&apos;) AS PID
+        ///, SERVERPROPERTY(&apos;Collation&apos;) AS Collation
+        ///, SERVERPROPER [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string serverproperty {
             get {
@@ -414,7 +481,7 @@ namespace mssqlstats.Properties {
         ///FETCH NEXT FROM cur INTO @dbname
         ///WHILE @@FETCH_STATUS = 0
         ///BEGIN
-        ///   SET @sql = N&apos;USE &apos; + @dbname + &apos;;&apos;
+        ///   SET @sql = N&apos;USE [&apos; + @dbname + &apos;];&apos;
         ///   SET @sql = @sql + N&apos;EXEC sp_spaceused ;&apos;
         ///   -- より正確な状態を取得する場合は@updateusageをTRUEに。コストがかかるので注意。
         ///   -- SET @sql = @sql + N&apos;EXEC sp_spaceused @updateusage = N&apos;&apos;TRUE&apos;&apos;;&apos;
@@ -422,7 +489,7 @@ namespace mssqlstats.Properties {
         ///   FETCH NEXT FROM cur INTO @dbname
         ///END
         ///CLOSE cur
-        ///DEALL [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///DEA [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sp_spaceused_database {
             get {
@@ -456,6 +523,32 @@ namespace mssqlstats.Properties {
         internal static string sp_spaceused_object {
             get {
                 return ResourceManager.GetString("sp_spaceused_object", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  g.name AS ag_name
+        ///  , c.database_name 
+        ///  , r.replica_server_name
+        ///  , r.availability_mode_desc
+        ///  , s.*
+        ///  , g.*
+        ///  , r.*
+        ///  , c.*
+        ///FROM sys.dm_hadr_database_replica_states AS s
+        ///  INNER JOIN sys.availability_databases_cluster AS c
+        ///    ON s.group_id = c.group_id 
+        ///    AND s.group_database_id = c.group_database_id
+        ///  INNER JOIN sys.availability_groups AS g
+        ///    ON g.group_id = s.group_id
+        ///  INNER JOIN sys.availability_replicas AS r
+        ///    ON s.group_id = r.group_id 
+        ///    AND s.re [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_availability_groups {
+            get {
+                return ResourceManager.GetString("sys_availability_groups", resourceCulture);
             }
         }
         
@@ -941,14 +1034,56 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(dbid) AS dbname
+        ///  , dbid
+        ///  , COUNT(*) AS query_count
+        ///  , SUM(total_elapsed_time/1000) AS total_elapsed_time
+        ///  , SUM(total_worker_time/1000) AS total_worker_time
+        ///  , SUM(total_physical_reads) AS total_physical_reads
+        ///  , SUM(total_logical_reads) AS total_logical_reads
+        ///  , SUM(total_logical_writes) AS total_logical_writes
+        ///  , SUM(total_clr_time/1000) AS total_clr_time
+        ///  , SUM(execution_count) AS execution_count
+        ///  , SUM(plan_generation_num) AS plan_generation_num
+        ///  [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_summary {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(dbid) AS dbname
+        ///  , dbid
+        ///  , COUNT(*) AS query_count
+        ///  , SUM(total_elapsed_time/1000) AS total_elapsed_time
+        ///  , SUM(total_worker_time/1000) AS total_worker_time
+        ///  , SUM(total_physical_reads) AS total_physical_reads
+        ///  , SUM(total_logical_reads) AS total_logical_reads
+        ///  , SUM(total_logical_writes) AS total_logical_writes
+        ///  , SUM(total_clr_time/1000) AS total_clr_time
+        ///  , SUM(execution_count) AS execution_count
+        ///  , SUM(plan_generation_num) AS plan_generation_num
+        ///- [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_exec_query_stats_summary_2 {
+            get {
+                return ResourceManager.GetString("sys_dm_exec_query_stats_summary_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_sysdb {
             get {
@@ -958,13 +1093,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_sysdb_2 {
             get {
@@ -974,13 +1109,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_sysdb_plan {
             get {
@@ -990,13 +1125,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_sysdb_plan_2 {
             get {
@@ -1006,13 +1141,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_userdb {
             get {
@@ -1022,13 +1157,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_userdb_2 {
             get {
@@ -1038,13 +1173,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_userdb_plan {
             get {
@@ -1054,13 +1189,13 @@ namespace mssqlstats.Properties {
         
         /// <summary>
         ///   USE tempdb  -- 2000互換モードのDBだとCROSS APPLYがsyntax errorになるのでtempdbに移動
-        ///SELECT TOP 100
+        ///SELECT TOP 200 /*mssqlstats_v2*/
         ///  DB_NAME(MIN(dbid)) AS &quot;DB Name&quot;
         ///  ,MIN(statement_text) AS &quot;Statement Text&quot;
         ///  ,MAX(last_execution_time) AS &quot;Last Exec Time&quot;
         ///  ,SUM(CAST(execution_count AS numeric(38))) AS &quot;Total Statement Exec Count&quot;
         ///  ,SUM(CAST(total_elapsed_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 1000.0 AS &quot;Avg Exec Time[ms]&quot;
-        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS numeric(38))) / 100 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  ,SUM(CAST(total_worker_time AS numeric(38))) / SUM(CAST(execution_count AS n [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_exec_query_stats_userdb_plan_2 {
             get {
@@ -1069,26 +1204,122 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
-        ///   SELECT /*mssqlstats_v1*/
-        ///  a.io_stall
-        ///  , a.io_stall_read_ms
-        ///  , a.io_stall_write_ms
-        ///  , a.num_of_reads
-        ///  , a.num_of_writes
-        ///  --, a.sample_ms, a.num_of_bytes_read, a.num_of_bytes_written, a.io_stall_write_ms 
-        ///  ,( ( a.size_on_disk_bytes / 1024 ) / 1024.0 ) AS size_on_disk_mb
-        ///  , db_name(a.database_id) AS dbname
-        ///  , b.name
-        ///  , a.file_id
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM
+        ///  sys.dm_hadr_cluster
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_hadr_cluster {
+            get {
+                return ResourceManager.GetString("sys_dm_hadr_cluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  db_name(s.database_id) AS db_name
         ///  , db_file_type = CASE 
-        ///                   WHEN a.file_id = 2 THEN &apos;Log&apos; 
+        ///                   WHEN s.file_id = 2 THEN &apos;Log&apos; 
         ///                   ELSE &apos;Data&apos; 
         ///                   END
-        ///  , UPPER(SUBSTRING(b.physica [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///  , f.physical_name 
+        ///  ,( ( s.size_on_disk_bytes / 1024 ) / 1024.0 ) AS size_on_disk_mb
+        ///  , v.volume_mount_point -- 単一ドライブ配下に複数の物理ディスクがマウントされている場合あり
+        ///  , v.volume_id          -- マウントポイントがフォルダを示す場合はドライブレターが同一でも物理ディスク（＝volume_id）がことなる
+        ///  
+        ///  -- IOPS
+        ///  , (num_of_reads+num_of_writes)/(sample_ms/1000) AS iops  -- sa [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_io_virtual_file_stats {
             get {
                 return ResourceManager.GetString("sys_dm_io_virtual_file_stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  db_name(s.database_id) AS db_name
+        ///  , db_file_type = CASE 
+        ///                   WHEN s.file_id = 2 THEN &apos;Log&apos; 
+        ///                   ELSE &apos;Data&apos; 
+        ///                   END
+        ///  , f.physical_name 
+        ///  ,( ( s.size_on_disk_bytes / 1024 ) / 1024.0 ) AS size_on_disk_mb
+        ///  , v.volume_mount_point -- 単一ドライブ配下に複数の物理ディスクがマウントされている場合あり
+        ///  , v.volume_id          -- マウントポイントがフォルダを示す場合はドライブレターが同一でも物理ディスク（＝volume_id）がことなる
+        ///  
+        ///  -- IOPS
+        ///  , (num_of_reads+num_of_writes)/(sample_ms/1000) AS iops  -- sa [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_io_virtual_file_stats_2 {
+            get {
+                return ResourceManager.GetString("sys_dm_io_virtual_file_stats_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  DB_NAME(database_id) AS dbname
+        ///  , COUNT_BIG(*) AS cached_pages
+        ///  , CAST(COUNT_BIG(*) * 8/1024.0 AS DECIMAL (10,2))  AS cached_size_mb
+        ///  , AVG(read_microsec) AS avg_read_microsec
+        ///FROM sys.dm_os_buffer_descriptors
+        ///WHERE database_id &lt;&gt; 32767 -- ResourceDb
+        ///GROUP BY DB_NAME(database_id)
+        ///ORDER BY cached_pages DESC
+        ///OPTION(RECOMPILE)
+        ////*
+        ///オブジェクトごとなら↓
+        ///select top 50 b.database_id, db=db_name(b.database_id)
+        ///  ,p.object_id
+        ///  ,object_name(p.object_id) as objname
+        ///  ,p.index_id
+        ///   [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_os_buffer_descriptors {
+            get {
+                return ResourceManager.GetString("sys_dm_os_buffer_descriptors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM
+        ///  sys.dm_os_buffer_pool_extension_configuration
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_os_buffer_pool_extension_configuration {
+            get {
+                return ResourceManager.GetString("sys_dm_os_buffer_pool_extension_configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM
+        ///  sys.dm_os_cluster_nodes
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_os_cluster_nodes {
+            get {
+                return ResourceManager.GetString("sys_dm_os_cluster_nodes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  *
+        ///FROM
+        ///  sys.dm_os_host_info
+        ///--sys.dm_os_host_infoはSQL Server 2017 以降でサポート
+        ///OPTION(RECOMPILE) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_os_host_info {
+            get {
+                return ResourceManager.GetString("sys_dm_os_host_info", resourceCulture);
             }
         }
         
@@ -1160,6 +1391,23 @@ namespace mssqlstats.Properties {
         internal static string sys_dm_os_memory_cache_clock_hands_2 {
             get {
                 return ResourceManager.GetString("sys_dm_os_memory_cache_clock_hands_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT /*mssqlstats_v2*/
+        ///  type
+        ///  , COUNT(*)  AS count
+        ///  , CAST((SUM(pages_kb)/1024.0) AS DECIMAL (15,2)) AS used_size_mb
+        ///  , CAST((SUM(virtual_memory_reserved_kb)/1024.0) AS DECIMAL (15,2)) AS vm_reserved_size_mb
+        ///  , CAST((SUM(virtual_memory_committed_kb)/1024.0) AS DECIMAL (15,2)) AS vm_committed_size_mb
+        ///  , CAST((SUM(awe_allocated_kb)/1024.0) AS DECIMAL (15,2)) AS awe_allocated_size_mb
+        ///  , CAST((SUM(shared_memory_reserved_kb)/1024.0) AS DECIMAL (15,2)) AS sm_reserved_size_mb
+        ///  , CAST((SUM(shared_ [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_dm_os_memory_clerks {
+            get {
+                return ResourceManager.GetString("sys_dm_os_memory_clerks", resourceCulture);
             }
         }
         
@@ -1304,28 +1552,17 @@ namespace mssqlstats.Properties {
         }
         
         /// <summary>
-        ///   SELECT TOP 100 /*mssqlstats_v1*/
-        ///  wait_type, 
-        ///  waiting_tasks_count,
-        ///  wait_time_ms,
-        ///  wait_time_ms/waiting_tasks_count as avg_wait_time_ms,
-        ///  max_wait_time_ms,
-        ///  signal_wait_time_ms
-        ///FROM
-        ///  sys.dm_os_wait_stats
-        ///WHERE
-        ///  wait_time_ms &gt; 0
-        ///  /*2017/01/29 update*/
-        ///  AND wait_type NOT IN (
-        ///    &apos;BROKER_EVENTHANDLER&apos;
-        ///    ,&apos;BROKER_RECEIVE_WAITFOR&apos;
-        ///    ,&apos;BROKER_TASK_STOP&apos;
-        ///    ,&apos;BROKER_TO_FLUSH&apos;
-        ///    ,&apos;BROKER_TRANSMITTER&apos;
-        ///    ,&apos;CHECKPOINT_QUEUE&apos;
-        ///    ,&apos;CHKPT&apos;
-        ///    ,&apos;CLR_AUTO_EVENT&apos;
-        ///    ,&apos;CLR_MANUAL_ [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///   SELECT /*mssqlstats_v1*/
+        ///  wait_type 
+        ///  , waiting_tasks_count
+        ///  , wait_time_ms AS total_wait_time_ms
+        ///  , wait_time_ms/waiting_tasks_count AS avg_total_wait_time_ms
+        ///  , signal_wait_time_ms AS cpu_wait_time_ms
+        ///  , signal_wait_time_ms/waiting_tasks_count AS avg_cpu_wait_time_ms
+        ///  , (wait_time_ms - signal_wait_time_ms) AS resource_wait_time_ms
+        ///  , (wait_time_ms - signal_wait_time_ms)/waiting_tasks_count AS avg_resource_wait_time_ms
+        ///  , max_wait_time_ms
+        ///  , CAST (N&apos;https://www.sqlskills.com/help/waits/ [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string sys_dm_os_wait_stats {
             get {
@@ -1615,6 +1852,16 @@ namespace mssqlstats.Properties {
         internal static string sys_xp_enumerrorlogs {
             get {
                 return ResourceManager.GetString("sys_xp_enumerrorlogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   /*mssqlstats_v2*/
+        ///EXEC sys.xp_instance_regread N&apos;HKEY_LOCAL_MACHINE&apos;, N&apos;HARDWARE\DESCRIPTION\System\BIOS&apos;, N&apos;BiosReleaseDate&apos; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string sys_xp_instance_regread_biosreleasedate {
+            get {
+                return ResourceManager.GetString("sys_xp_instance_regread_biosreleasedate", resourceCulture);
             }
         }
         

@@ -1,0 +1,6 @@
+SELECT /*mssqlstats_v2*/
+  DB_NAME(database_id) AS database_name
+  ,Å@*
+FROM
+  msdb.dbo.suspect_pages
+OPTION(RECOMPILE)

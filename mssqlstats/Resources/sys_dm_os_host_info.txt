@@ -1,0 +1,6 @@
+SELECT /*mssqlstats_v2*/
+  *
+FROM
+  sys.dm_os_host_info
+--sys.dm_os_host_infoはSQL Server 2017 以降でサポート
+OPTION(RECOMPILE)

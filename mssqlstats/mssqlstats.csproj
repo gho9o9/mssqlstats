@@ -109,6 +109,20 @@
     <None Include="Resources\dbcc_loginfo.txt" />
     <None Include="Resources\sys_dm_db_log_info.txt" />
     <None Include="Resources\sys_dm_db_log_stats.txt" />
+    <None Include="Resources\sys_dm_os_host_info.txt" />
+    <None Include="Resources\sys_dm_os_cluster_nodes.txt" />
+    <None Include="Resources\sys_dm_hadr_cluster.txt" />
+    <None Include="Resources\sys_availability_groups.txt" />
+    <None Include="Resources\readerrorlog_manufacturer.txt" />
+    <None Include="Resources\sys_dm_os_buffer_pool_extension_configuration.txt" />
+    <None Include="Resources\sys_dm_os_buffer_descriptors.txt" />
+    <None Include="Resources\msdb_dbo_suspect_pages.txt" />
+    <None Include="Resources\sys_dm_io_virtual_file_stats_2.txt" />
+    <None Include="Resources\sys_xp_instance_regread_biosreleasedate.txt" />
+    <None Include="Resources\readerrorlog_iostall.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_summary.txt" />
+    <None Include="Resources\sys_dm_exec_query_stats_summary_2.txt" />
+    <None Include="Resources\sys_dm_os_memory_clerks.txt" />
     <Content Include="Work\BUGFIX.txt" />
     <Content Include="Work\HOWTO_RELEASE.txt" />
     <Content Include="README.txt">
@@ -203,7 +217,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

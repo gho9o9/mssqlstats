@@ -40,41 +40,7 @@ namespace mssqlstats
 
         static void DebugCode(SqlCommand Cmd)
         {
-            //System.OperatingSystem os = System.Environment.OSVersion;
-
-            //Cmd.CommandText = "use db01";
-            //int res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "exec test_no_proc 1";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "EXEC sp_executesql N'/*aaa*/ SELECT * FROM dataset WHERE id = @param1', N'@param1 int', @param1 = 1";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "select * from sys.databases";
-            //res = Cmd.ExecuteNonQuery();//ExecuteNonQueryのようなものだとタイムアウトしない
-
-            //Cmd.CommandText = "use db01; update table_1 set name = 'oota' where id = 1"; //このselectがロックウェイトするように先行Txでupdateしておく
-
-            //using (SqlDataReader reader1 = Cmd.ExecuteReader())//コマンドタイムアウトはここでException。
-            //{
-            //    res = reader1.FieldCount;
-            //    do
-            //    {
-            //        for (int i = 0; i < reader1.FieldCount; i++)
-            //        {
-            //            logger.Info(reader1.GetName(i));
-            //        }
-
-            //        while (reader1.Read()) //locktimeoutはここでエスカレーション
-            //        {
-            //            for (int i = 0; i < reader1.FieldCount; i++)
-            //            {
-            //                logger.Info(reader1.GetValue(i).ToString());
-            //            }
-            //        }
-            //    } while (reader1.NextResult());
-            //}
+            
         }
 
         static void Main(string[] args)
